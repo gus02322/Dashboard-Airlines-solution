@@ -148,8 +148,21 @@
 
 /* ---------- Body ---------- */
 .db-body { flex: 1; display: flex; min-height: 0; }
-.db-main { flex: 1; min-width: 0; overflow: auto; position: relative; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #2a3040 transparent; }
+.db-main { flex: 1; min-width: 0; overflow: auto; position: relative; scrollbar-width: thin; scrollbar-color: #2a3040 transparent; }
 .db-main:focus-visible { outline-offset: -2px; }
+.db-body { position: relative; }
+.db-now-btn {
+  position: absolute; left: 50%; bottom: 16px; z-index: 30; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px;
+  border-radius: 999px; background: var(--now); color: #1a1200;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 18px rgba(255, 204, 0, 0.35);
+}
+.db-now-btn::before { content: ''; border: 5px solid transparent; border-left: 7px solid currentColor; border-right: 0; }
+.db-now-btn[hidden] { display: none; }
+.db.is-tv .db-now-btn { font-size: 18px; min-height: 52px; padding: 0 22px; }
+@media (min-width: 1280px) { .db-now-btn { left: calc(50% - 118px); } }
+.db.is-tv .db-now-btn { left: 50%; }
 .db-empty { padding: 40px 20px; text-align: center; color: var(--text-dim); font-size: 15px; }
 
 .db-panel {
