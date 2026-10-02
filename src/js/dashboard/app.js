@@ -75,9 +75,9 @@ export function createDashboard(host, opts = {}) {
         <div class="db-body">
           <div class="db-main" tabindex="0" aria-label="Schedule"></div>
           <aside class="db-panel" aria-label="Summary">
-            <section class="pn-sec"><h4 class="pn-title">${icon('bell')}Next alerts</h4><ul class="pn-alerts"></ul></section>
-            <section class="pn-sec"><h4 class="pn-title">Day progress</h4><div class="pn-bar"><div class="pn-fill"></div></div><p class="pn-txt mono"></p></section>
-            <section class="pn-sec"><h4 class="pn-title">Airlines today</h4><ul class="pn-legend"></ul></section>
+            <section class="pn-sec"><p class="pn-title">${icon('bell')}Next alerts</p><ul class="pn-alerts"></ul></section>
+            <section class="pn-sec"><p class="pn-title">Day progress</p><div class="pn-bar"><div class="pn-fill"></div></div><p class="pn-txt mono"></p></section>
+            <section class="pn-sec"><p class="pn-title">Airlines today</p><ul class="pn-legend"></ul></section>
           </aside>
         </div>
       </div>

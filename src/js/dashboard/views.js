@@ -76,7 +76,6 @@ function renderTimeline(scroll, items, s, onOpen, ctx) {
     b.className = 'eblock ' + it.cls;
     b.style.cssText = `top:${it.mins * ppm}px;left:${LANE + col * (bw + GAP)}px;width:${bw}px;height:${bh}px;--al:${it.color}`;
     b.innerHTML = it.html;
-    b.setAttribute('aria-label', it.label);
     b.addEventListener('click', () => it.flightId && onOpen(it.flightId));
     frag.appendChild(b);
     blocks.push({ el: b, mins: it.mins, pastable: it.pastable !== false });
@@ -118,7 +117,7 @@ function renderList(scroll, items, ctx) {
       if (!past && !nowDone) { nowDone = true; html += `<div class="list-now mono" data-now>NOW ${m2t(t)}</div>`; }
       const h = Math.floor(it.mins / 60);
       if (h !== lastHour) { lastHour = h; html += `<div class="list-hour mono">${String(h).padStart(2, '0')}:00</div>`; }
-      html += `<button type="button" class="eblock eblock--list ${it.cls}${past ? ' past' : ''}" style="--al:${it.color}" data-i="${i}" aria-label="${esc(it.label)}">${it.listHtml || it.html}</button>`;
+      html += `<button type="button" class="eblock eblock--list ${it.cls}${past ? ' past' : ''}" style="--al:${it.color}" data-i="${i}">${it.listHtml || it.html}</button>`;
     });
     if (!nowDone) html += `<div class="list-now mono" data-now>NOW ${m2t(t)}</div>`;
     inner.innerHTML = html;
@@ -203,7 +202,7 @@ export function renderAirlines(scroll, ctx) {
         </button>`;
       }).join('');
       cards += `<article class="al-card" style="--al:${list[0].color}">
-        <header class="al-head"><span class="al-dot"></span><h4 class="al-name">${esc(name)}</h4><span class="al-total mono">${meals} meals</span></header>
+        <header class="al-head"><span class="al-dot"></span><p class="al-name">${esc(name)}</p><span class="al-total mono">${meals} meals</span></header>
         <div class="al-body">${rows}</div></article>`;
     }
     scroll.innerHTML = `<div class="view-head"><span class="view-title">Flights by airline</span><span class="view-meta mono">Total meals <strong>${total.toLocaleString('en-US')}</strong></span></div>

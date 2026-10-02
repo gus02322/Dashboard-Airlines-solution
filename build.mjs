@@ -66,7 +66,7 @@ async function page(path, html) {
 
 // Landing page: sections render in this order. A section module that
 // does not exist yet is simply skipped.
-const order = ['hero', 'proofStrip', 'problem', 'demo', 'features', 'copilot', 'howItWorks', 'roi', 'comparison', 'pricing', 'proof', 'faq', 'contact'];
+const order = ['hero', 'proofStrip', 'problem', 'demo', 'features', 'copilot', 'howItWorks', 'roi', 'comparison', 'proof', 'pricing', 'faq', 'contact'];
 const mainHtml = order.filter((k) => S[k]).map((k) => S[k](cfg)).join('\n');
 await page('', layout(cfg, {
   path: '',
@@ -89,7 +89,7 @@ await page('demo', layout(cfg, {
   <a class="nav-logo" href="../"><span class="logo-mark" aria-hidden="true"></span><span>${cfg.site.name.toUpperCase()}</span></a>
   <p class="demo-bar-note">Live demo · sample data</p>
   <div class="demo-bar-actions">
-    <button type="button" class="link-btn" data-copy-link="">${(await import('./src/js/icons.js')).icon('link')}<span>Copy link</span></button>
+    <button type="button" class="link-btn" data-copy-link="" aria-label="Copy link to this demo">${(await import('./src/js/icons.js')).icon('link')}<span>Copy link</span></button>
     <a class="btn btn--primary btn--sm" href="../#contact">${cfg.navCta}</a>
   </div>
 </header>

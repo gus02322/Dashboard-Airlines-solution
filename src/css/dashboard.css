@@ -187,14 +187,17 @@
 }
 .eblock:hover { filter: brightness(1.25); z-index: 5; }
 .eblock:focus-visible { z-index: 6; outline-offset: 1px; }
-.eblock.past { opacity: 0.42; }
+.eblock.past { background: #171b25; border-left-color: color-mix(in srgb, var(--al) 40%, #171b25); box-shadow: none; }
+.eblock.past .eb-time, .eblock.past .eb-flight, .eblock.past .eb-airline { color: var(--text-dim); }
+.eblock.past .eb-type { color: color-mix(in srgb, var(--c) 55%, #a9b0c2); }
+.eblock.past .eb-badge { color: color-mix(in srgb, var(--c) 55%, #a9b0c2); border-color: var(--db-border); background: none; }
 .eb-time { font-size: 12px; color: rgba(255, 255, 255, 0.66); display: flex; align-items: center; gap: 6px; }
 .eb-type { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c); }
 .eb-flight { font-size: 16px; color: #e8ecf8; white-space: nowrap; }
 .eb-airline { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255, 255, 255, 0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .type-eta { --c: var(--eta); } .type-seal { --c: var(--seal); } .type-truck { --c: var(--truck); } .type-etd { --c: var(--etd); }
 .type-box { --c: var(--etd); } .type-box.is-d1 { --c: var(--seal); }
-.type-box.is-d1:not(.past) { opacity: 0.8; }
+
 
 .prod-badge { font-size: 10px; padding: 1px 5px; border-radius: 3px; letter-spacing: 0.08em; border: 1px solid; }
 .prod-badge.is-d { color: var(--etd); border-color: rgba(102, 170, 255, 0.4); background: rgba(102, 170, 255, 0.14); }
@@ -241,7 +244,8 @@
 .al-row { display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 14px; border-bottom: 1px solid var(--db-border); text-align: left; transition: background 0.15s; }
 .al-row:last-child { border-bottom: 0; }
 .al-row:hover { background: var(--db-surface2); }
-.al-row.past { opacity: 0.45; }
+.al-row.past .al-num { color: var(--text-dim); }
+.al-row.past .al-chip { color: #a9b0c2; border-color: var(--db-border); }
 .al-num { min-width: 66px; font-size: 14px; color: var(--text-strong); }
 .al-chips { display: flex; flex-wrap: wrap; gap: 4px; flex: 1; }
 .al-chip { font-size: 10px; padding: 2px 5px; border-radius: 3px; color: var(--c); border: 1px solid color-mix(in srgb, var(--c) 32%, transparent); }
@@ -298,7 +302,8 @@
 .fs-day.on { color: var(--accent); border-color: rgba(0, 212, 255, 0.4); background: rgba(0, 212, 255, 0.08); }
 .fs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .fs-card { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 4px 8px; padding: 12px 14px; background: var(--db-surface); border: 1px solid var(--db-border); border-left: 3px solid var(--c); border-radius: 10px; }
-.fs-card.done { opacity: 0.55; }
+.fs-card.done { background: #171b25; border-left-color: var(--db-border); }
+.fs-card.done .fs-time { color: var(--text-dim); }
 .fs-ic { color: var(--c); display: flex; }
 .fs-ic .ico { width: 18px; height: 18px; }
 .fs-lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c); }
@@ -368,6 +373,12 @@
 .alert-dismiss .ico { width: 20px; height: 20px; }
 .alert-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: color-mix(in srgb, var(--c) 20%, transparent); }
 .alert-progress-fill { height: 100%; background: var(--c); transform-origin: left; }
+
+/* Phones: keep dashboard text at 12px minimum */
+@media (max-width: 559px) {
+  .eb-airline, .eb-badge, .list-hour, .list-now, .spill-lbl, .al-chip, .wk-al, .wk-truck, .wk-count, .wk-date, .meal-tag, .fs-day, .fs-lbl, .fs-rel, .sr-times, .pn-title, .prod-badge { font-size: 12px; }
+  .eb-badge { padding: 1px 7px; }
+}
 
 /* ---------- Demo controls (under the frame) ---------- */
 .db-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }

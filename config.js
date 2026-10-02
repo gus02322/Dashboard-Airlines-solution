@@ -66,6 +66,7 @@ export default {
 
   /* ---------- 2. Problem ---------- */
   problem: {
+    eyebrow: 'The problem',
     title: 'Today, the ramp runs on group chats.',
     items: [
       {
@@ -97,6 +98,7 @@ export default {
 
   /* ---------- 4. Features (max 6) ---------- */
   features: {
+    eyebrow: 'Why teams switch',
     title: 'What changes on day one',
     items: [
       { icon: 'timeline', title: 'The whole day at a glance', text: 'Every ETA, sealing, truck and ETD on one live timeline. The NOW line shows exactly where you are.' },
@@ -124,6 +126,7 @@ export default {
 
   /* ---------- 6. How it works ---------- */
   howItWorks: {
+    eyebrow: 'How it works',
     title: 'Live in under 1 day. No IT project.',
     steps: [
       { title: 'Connect your sheet', text: 'Keep your existing Google Sheet. We map your columns once: flight, airline, times, days.' },
@@ -134,6 +137,7 @@ export default {
 
   /* ---------- 7. ROI calculator ---------- */
   roi: {
+    eyebrow: 'Your numbers',
     title: 'What is one late truck worth to you?',
     text: 'Use your own numbers. This is an estimate, not a promise.',
     defaults: {
@@ -149,6 +153,7 @@ export default {
 
   /* ---------- 8. Comparison ---------- */
   comparison: {
+    eyebrow: 'Comparison',
     title: 'Where OpsRamp fits',
     columns: ['Spreadsheets + WhatsApp', 'OpsRamp', 'Enterprise suites'],
     rows: [
@@ -162,6 +167,8 @@ export default {
 
   /* ---------- 9. Pricing ---------- */
   pricing: {
+    eyebrow: 'Pricing',
+    subtitle: 'No setup project, no long contract. Prices exclude taxes.',
     title: 'Simple pricing',
     // While true, each price shows an "Example price" tag. Set to false
     // once you have entered your real prices.
@@ -199,6 +206,7 @@ export default {
 
   /* ---------- 10. Proof ---------- */
   proof: {
+    eyebrow: 'In production',
     title: 'Built on the ramp, not in a boardroom.',
     text: 'Built by an airline catering operations manager. Used daily at a major international hub.',
     stats: [
@@ -214,6 +222,7 @@ export default {
 
   /* ---------- 11. FAQ ---------- */
   faq: {
+    eyebrow: 'FAQ',
     title: 'Questions operators ask',
     items: [
       { q: 'Is our schedule data secure?', a: 'Your data stays in your own Google Sheet, under your Google account permissions. OpsRamp only reads the published schedule. No passenger data is needed.' },
@@ -227,6 +236,7 @@ export default {
 
   /* ---------- 12. Final CTA & form ---------- */
   cta: {
+    eyebrow: 'Book a demo',
     title: 'See your own operation on it.',
     text: 'Send us a few lines. We reply within one working day with a demo slot.',
     sizes: ['Under 20 flights / day', '20 to 50 flights / day', '50 to 100 flights / day', 'More than 100 flights / day'],

@@ -72,7 +72,7 @@ export function createSheet(db, getNow) {
     content.innerHTML = `<header class="fs-head" style="--al:${f.color}">
         <span class="fs-dot"></span>
         <div>
-          <h4 class="fs-num mono" id="fs-title">${f.flight}</h4>
+          <p class="fs-num mono" id="fs-title">${f.flight}</p>
           <p class="fs-al">${esc(f.airline)}</p>
           <div class="fs-tags"><span class="meal-tag meal-${f.mealType}">${f.mealType}</span><span class="fs-meals mono">${f.meals} meals</span></div>
           <div class="fs-days" aria-label="Days of operation">${days}</div>

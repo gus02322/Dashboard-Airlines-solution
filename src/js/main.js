@@ -8,6 +8,13 @@
    ============================================================ */
 
 import { initHero } from './hero.js';
+import { initCopilot } from './copilot.js';
+import { initRoi } from './roi.js';
+import { initForm } from './form.js';
+
+/* Browser-side settings written by the build from config.js */
+let CFG = {};
+try { CFG = JSON.parse(document.getElementById('site-config')?.textContent || '{}'); } catch (e) { /* defaults */ }
 
 document.documentElement.classList.remove('no-js');
 
@@ -60,6 +67,14 @@ if (dashHost) {
     io.observe(dashHost);
   } else start();
 }
+
+/* ---------- Copilot, ROI, form ---------- */
+const chat = document.querySelector('[data-copilot]');
+if (chat) initCopilot(chat);
+const roi = document.querySelector('[data-roi-root]');
+if (roi) initRoi(roi, CFG.roi);
+const form = document.querySelector('[data-form]');
+if (form) initForm(form, CFG);
 
 /* ---------- Copy link ---------- */
 document.querySelectorAll('[data-copy-link]').forEach((btn) => {
