@@ -1,0 +1,109 @@
+/* ============================================================
+   Design tokens
+   Inherited from the production dashboard. Secondary text was
+   lightened from #5a6070 to #8f98ad to pass WCAG AA on #13161e.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/barlow-condensed-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/barlow-condensed-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/barlow-condensed-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/barlow-condensed-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Share Tech Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/share-tech-mono-400.woff2') format('woff2');
+}
+
+/* Metric-matched fallbacks: keep line lengths close while web fonts load (no layout shift). */
+@font-face {
+  font-family: 'Barlow Condensed Fallback';
+  src: local('Arial Narrow'), local('ArialNarrow'), local('Roboto Condensed'), local('Arial');
+  size-adjust: 82%;
+  ascent-override: 118%;
+  descent-override: 28%;
+}
+@font-face {
+  font-family: 'Share Tech Mono Fallback';
+  src: local('Courier New'), local('Menlo'), local('Consolas');
+  size-adjust: 92%;
+}
+
+:root {
+  /* Surfaces */
+  --bg: #13161e;
+  --bg-deep: #0e1016;
+  --surface: #1e2230;
+  --surface-2: #252a3a;
+  --border: #323848;
+  --border-soft: #262b39;
+
+  /* Text */
+  --text: #d8dce8;
+  --text-strong: #f2f4fa;
+  --text-dim: #8f98ad;     /* AA on --bg and --surface */
+  --text-muted: #5a6070;   /* decorative only, never for meaningful text */
+
+  /* Brand */
+  --accent: #00d4ff;
+  --accent-ink: #001a24;   /* text on accent buttons */
+  --accent-soft: rgba(0, 212, 255, 0.1);
+  --now: #ffcc00;
+
+  /* Events */
+  --eta: #4dffb4;
+  --seal: #ffaa44;
+  --truck: #ff6b6b;
+  --etd: #66aaff;
+
+  /* Meal types */
+  --halal: #ffdd66;
+  --western: #c8aaff;
+
+  /* Type */
+  --font-ui: 'Barlow Condensed', 'Barlow Condensed Fallback', 'Arial Narrow', sans-serif;
+  --font-mono: 'Share Tech Mono', 'Share Tech Mono Fallback', ui-monospace, monospace;
+
+  /* Layout */
+  --gutter: 16px;
+  --maxw: 1180px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --nav-h: 60px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.8, 0.24, 1);
+  --dur: 0.5s;
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: 32px; --nav-h: 68px; }
+}
+@media (min-width: 1280px) {
+  :root { --gutter: 48px; }
+}

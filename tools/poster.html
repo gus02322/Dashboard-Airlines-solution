@@ -1,0 +1,95 @@
+<!doctype html>
+<!--
+  Poster layouts used by tools/capture.mjs to export the social image
+  and the LinkedIn visuals. Not part of the published site.
+  Open /tools/poster.html?p=og|hero|timeline|tv after `node build.mjs`.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpsRamp posters</title>
+<link rel="stylesheet" href="../dist/assets/site.css">
+<style>
+  html, body { margin: 0; overflow: hidden; }
+  .poster { position: relative; overflow: hidden; background: var(--bg); }
+  .poster .hero-grid-bg { opacity: 0.9; }
+  .poster-glow { position: absolute; width: 1100px; height: 1100px; right: -380px; top: -460px; background: radial-gradient(circle, rgba(0, 212, 255, 0.16), transparent 62%); pointer-events: none; }
+  .brand { display: inline-flex; align-items: center; gap: 14px; font-weight: 700; letter-spacing: 0.22em; color: var(--text-strong); }
+  .brand .logo-mark { width: 16px; height: 16px; border-width: 3px; }
+  .tagline { color: var(--text-dim); letter-spacing: 0.06em; }
+  .poster .h1 { line-height: 0.98; }
+  .poster .hv-card { height: 100%; }
+  .chip-row { display: flex; gap: 18px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; }
+  .chip-row span { display: inline-flex; align-items: center; gap: 8px; color: var(--c); }
+  .chip-row span::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: currentColor; box-shadow: 0 0 8px currentColor; }
+
+  /* 1200 x 630: link preview */
+  .p-og { width: 1200px; height: 630px; display: grid; grid-template-columns: 1fr 470px; gap: 56px; padding: 64px 64px 64px 72px; }
+  .p-og .h1 { font-size: 76px; margin: 36px 0 26px; }
+  .p-og .tagline { font-size: 24px; max-width: 26ch; }
+  .p-og .vis { position: relative; height: 502px; }
+
+  /* 1200 x 1200: LinkedIn hero */
+  .p-hero { width: 1200px; height: 1200px; padding: 80px; display: flex; flex-direction: column; }
+  .p-hero .h1 { font-size: 104px; margin: 40px 0 24px; }
+  .p-hero .tagline { font-size: 28px; max-width: 34ch; }
+  .p-hero .vis { flex: 1; margin-top: 48px; min-height: 0; }
+  .p-hero .foot { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; font-size: 22px; }
+
+  /* 1600 x 1000: timeline */
+  .p-timeline { width: 1600px; height: 1000px; padding: 56px 64px 64px; display: flex; flex-direction: column; }
+  .p-timeline .top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; }
+  .p-timeline .top .h2 { font-size: 56px; max-width: none; margin-top: 18px; }
+  .p-timeline .db-host { --db-h: 760px; }
+  .p-timeline .db-controls { display: none; }
+  .db-tv-exit { display: none !important; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="module">
+import { initHero } from '../dist/assets/js/hero.js';
+import { createDashboard } from '../dist/assets/js/dashboard/app.js';
+
+const p = new URLSearchParams(location.search).get('p') || 'og';
+const root = document.getElementById('root');
+const brand = '<span class="brand"><span class="logo-mark"></span>OPSRAMP</span>';
+const title = '<span class="hero-line">Every flight.</span><span class="hero-line">Every milestone.</span><span class="hero-line is-accent">One screen.</span>';
+const card = `<div class="hero-visual vis"><div class="hv-card">
+  <div class="hv-top"><span class="hv-logo"><span class="logo-mark"></span>OPSRAMP</span><span class="hv-clock mono">10:40</span><span class="hv-live mono"><span class="live-dot"></span>LIVE</span></div>
+  <div class="hv-legend mono"><span class="c-eta">ETA</span><span class="c-seal">Sealing</span><span class="c-truck">Truck</span><span class="c-etd">ETD</span></div>
+  <div class="hv-view"><div class="hv-track"></div><div class="hv-now"><span class="hv-now-lbl mono">NOW 10:40</span></div></div>
+</div></div>`;
+
+if (p === 'og') {
+  root.innerHTML = `<div class="poster p-og"><div class="hero-grid-bg"></div><div class="poster-glow"></div>
+    <div style="position:relative">${brand}<h1 class="h1 hero-title">${title}</h1>
+    <p class="tagline">Live operations board for airline catering. Fed by your Google Sheet.</p></div>${card}</div>`;
+} else if (p === 'hero') {
+  root.innerHTML = `<div class="poster p-hero"><div class="hero-grid-bg"></div><div class="poster-glow"></div>
+    <div style="position:relative">${brand}<h1 class="h1 hero-title">${title}</h1>
+    <p class="tagline">ETA, sealing, truck departure and ETD on one live board. Fed by the Google Sheet you already use.</p></div>
+    ${card}
+    <div class="foot" style="position:relative"><div class="chip-row"><span class="c-eta">ETA</span><span class="c-seal">Sealing</span><span class="c-truck">Truck</span><span class="c-etd">ETD</span></div><span class="tagline">Live in under 1 day</span></div></div>`;
+} else if (p === 'timeline') {
+  root.innerHTML = `<div class="poster p-timeline"><div class="poster-glow"></div>
+    <div class="top" style="position:relative"><div>${brand}<h2 class="h2">The whole day on one live board</h2></div>
+    <div class="chip-row" style="font-size:20px"><span class="c-eta">ETA</span><span class="c-seal">Sealing</span><span class="c-truck">Truck</span><span class="c-etd">ETD</span></div></div>
+    <div class="db-host" id="db"></div></div>`;
+} else if (p === 'tv') {
+  root.innerHTML = '<div class="db-host" id="db" style="--db-h:100vh"></div>';
+}
+
+await document.fonts.ready;
+const hv = document.querySelector('.hero-visual');
+if (hv) initHero(hv);
+const host = document.getElementById('db');
+if (host) {
+  const d = createDashboard(host, { start: p === 'tv' ? '11:52' : '10:40' });
+  if (p === 'tv') await d.setTV(true);
+}
+setTimeout(() => { document.body.dataset.ready = '1'; }, 900);
+</script>
+</body>
+</html>
