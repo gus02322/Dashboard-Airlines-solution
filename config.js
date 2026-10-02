@@ -19,7 +19,8 @@ export default {
     name: 'OpsRamp',
     // Final public URL, no trailing slash. Used for canonical links,
     // social previews (LinkedIn needs absolute URLs) and the sitemap.
-    url: 'https://opsramp-demo.netlify.app',
+    // Currently: GitHub Pages. Replace with your own domain later.
+    url: 'https://gus02322.github.io/Dashboard-Airlines-solution',
     title: 'OpsRamp | Live operations board for airline catering',
     description:
       'A real-time board for airline catering: ETA, sealing, truck departure and ETD on one screen. Fed by a Google Sheet. Live in under a day.',
@@ -31,9 +32,11 @@ export default {
   contact: {
     email: 'augustin@de-franssu.com',
     linkedin: 'https://www.linkedin.com/in/YOUR-PROFILE', // TODO: replace
-    // Form provider: 'netlify' (works automatically when hosted on Netlify)
-    // or 'formspree' (paste your form endpoint below).
-    formProvider: 'netlify',
+    // Form provider:
+    //  'mailto'    opens the visitor's email app, pre-filled (works anywhere, no account)
+    //  'netlify'   Netlify Forms (only when the site is hosted on Netlify)
+    //  'formspree' paste your Formspree endpoint below (works on GitHub Pages)
+    formProvider: 'mailto',
     formspreeEndpoint: 'https://formspree.io/f/YOUR_FORM_ID', // only used with 'formspree'
   },
 

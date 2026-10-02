@@ -21,8 +21,8 @@ python3 -m http.server 4173 -d dist            # preview at http://localhost:417
 |---|---|---|
 | Real prices | `pricing.plans[].price`, then set `pricing.showExampleTag: false` | Example values ($290 / $690) |
 | LinkedIn profile | `contact.linkedin` | Placeholder |
-| Final domain | `site.url` (used for social previews, canonical, sitemap) | `https://opsramp-demo.netlify.app` |
-| Form provider | `contact.formProvider` (`'netlify'` or `'formspree'`) and `contact.formspreeEndpoint` | Netlify |
+| Final domain | `site.url` (used for social previews, canonical, sitemap) | GitHub Pages URL |
+| Form provider | `contact.formProvider` (`'mailto'`, `'formspree'` or `'netlify'`) | `mailto` |
 | Testimonials | `proof.testimonials` (block appears automatically when not empty) | Empty, by design |
 | Proof figures | `proofStrip` and `proof.stats` | ~50 users, multi-site, 4 milestones |
 | Product name | `site.name` | Check trademark and domain availability for "OpsRamp" before launch |
@@ -31,22 +31,24 @@ After changing `site.url` or any visible text used in the images, regenerate the
 
 ## 3. Deploy
 
-### Option A: Netlify (recommended, the form works with no setup)
+`node build.mjs` writes the site twice: `dist/` (Netlify) and `docs/` (GitHub Pages). Commit `docs/` after every build.
 
-1. Push this repository to GitHub.
-2. On netlify.com: **Add new site > Import an existing project > GitHub**, pick the repository.
-3. Netlify reads `netlify.toml`: build command `node build.mjs`, publish directory `dist`. Click **Deploy**.
-4. **Site configuration > Domain management**: add your domain, then put the same URL in `site.url` and push.
-5. **Forms**: after the first deploy, the "demo-request" form appears under *Forms*. Add an email notification to `augustin@de-franssu.com` (*Forms > Form notifications*).
-6. Test the form once from the live site.
+### Option A: GitHub Pages (current setup, free)
 
-### Option B: GitHub Pages
+1. Repository **Settings > Pages**.
+2. **Source: Deploy from a branch**. Branch: `main` (or the working branch before merging), folder: **`/docs`**. Save.
+3. After about a minute the site is live at `https://gus02322.github.io/Dashboard-Airlines-solution/`.
+4. The form uses `formProvider: 'mailto'`: it opens the visitor's email app with the request pre-filled. To receive requests without the visitor's email app, create a free form on formspree.io, set `formProvider: 'formspree'` and paste the endpoint in `formspreeEndpoint`, then rebuild and commit `docs/`.
 
-1. In `config.js`: set `contact.formProvider: 'formspree'`. Create a free form on formspree.io and paste its endpoint in `contact.formspreeEndpoint`.
-2. Set `site.url` to `https://<user>.github.io/<repo>` (or your custom domain).
-3. Repository **Settings > Pages > Source: GitHub Actions**. The workflow in `.github/workflows/pages.yml` builds and publishes on every push to `main`.
+A `404 File not found` on GitHub Pages means the folder is set to `/ (root)` instead of `/docs`, or the branch has no `docs/` folder yet.
 
-If the form provider is unreachable, the form opens the visitor's email app with the message pre-filled to `contact.email`, so no request is lost.
+### Option B: Netlify (custom domain, built-in forms)
+
+1. On netlify.com: **Add new site > Import an existing project > GitHub**, pick the repository. Netlify reads `netlify.toml` (build `node build.mjs`, publish `dist`). Click **Deploy**.
+2. In `config.js`: set `contact.formProvider: 'netlify'` and `site.url` to the Netlify or custom domain, then push.
+3. **Forms > Form notifications**: add an email notification to `augustin@de-franssu.com` and send one test request from the live site.
+
+In every mode, if sending fails the form falls back to the visitor's email app, so no request is lost.
 
 ## 4. Visuals for LinkedIn, emails and decks
 
@@ -74,6 +76,7 @@ Share link for the demo alone: `https://<your-domain>/demo/` (the page has a "Co
 config.js            the only file to edit for content
 build.mjs            static build (zero dependencies)
 netlify.toml         Netlify build + headers
+docs/                built site for GitHub Pages (generated, commit it)
 src/layout.mjs       HTML shell: meta, Open Graph, structured data (SoftwareApplication)
 src/sections/*.mjs   one template per landing section
 src/css/             tokens, base, sections, dashboard

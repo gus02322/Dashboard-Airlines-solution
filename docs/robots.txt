@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gus02322.github.io/Dashboard-Airlines-solution/sitemap.xml

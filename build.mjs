@@ -131,4 +131,12 @@ ${['', 'demo/', 'legal/'].map((p) => `  <url><loc>${cfg.site.url}/${p}</loc><las
 `);
 await writeFile(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${cfg.site.url}/sitemap.xml\n`);
 
-console.log(`Built ${Object.keys(S).length} sections -> ${OUT}`);
+/* ---------- GitHub Pages copy ----------
+   GitHub Pages can serve a branch's /docs folder directly, so the built
+   site is mirrored there (commit it). Netlify keeps using ./dist. */
+const DOCS = join(ROOT, 'docs');
+await rm(DOCS, { recursive: true, force: true });
+await cp(OUT, DOCS, { recursive: true });
+await writeFile(join(DOCS, '.nojekyll'), '');
+
+console.log(`Built ${Object.keys(S).length} sections -> ${OUT} (and ./docs for GitHub Pages)`);
