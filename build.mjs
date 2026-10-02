@@ -139,4 +139,27 @@ await rm(DOCS, { recursive: true, force: true });
 await cp(OUT, DOCS, { recursive: true });
 await writeFile(join(DOCS, '.nojekyll'), '');
 
+/* Safety net: if GitHub Pages is set to serve the repository root instead
+   of /docs, it would show this README. A root index.html sends visitors
+   (and link previews) to the real site in /docs, keeping any #anchor. */
+await writeFile(join(ROOT, 'index.html'), `<!doctype html>
+<html lang="${cfg.site.language}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${cfg.site.title}</title>
+<meta name="description" content="${cfg.site.description}">
+<meta property="og:title" content="${cfg.site.title}">
+<meta property="og:description" content="${cfg.site.description}">
+<meta property="og:image" content="${cfg.site.url}/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url=docs/">
+<script>location.replace('docs/' + location.hash);</script>
+<style>body{background:#13161e;color:#d8dce8;font-family:sans-serif;display:grid;place-items:center;height:100vh;margin:0}a{color:#00d4ff}</style>
+</head>
+<body><p>Opening the site… <a href="docs/">continue</a></p></body>
+</html>
+`);
+
 console.log(`Built ${Object.keys(S).length} sections -> ${OUT} (and ./docs for GitHub Pages)`);
