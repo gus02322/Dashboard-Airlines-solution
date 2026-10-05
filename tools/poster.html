@@ -65,11 +65,11 @@ const card = `<div class="hero-visual vis"><div class="hv-card">
 if (p === 'og') {
   root.innerHTML = `<div class="poster p-og"><div class="hero-grid-bg"></div><div class="poster-glow"></div>
     <div style="position:relative">${brand}<h1 class="h1 hero-title">${title}</h1>
-    <p class="tagline">Live operations board for airline catering. Fed by your Google Sheet.</p></div>${card}</div>`;
+    <p class="tagline">Live operations board for airline catering. Live ETA and ETD, slots that adjust on their own.</p></div>${card}</div>`;
 } else if (p === 'hero') {
   root.innerHTML = `<div class="poster p-hero"><div class="hero-grid-bg"></div><div class="poster-glow"></div>
     <div style="position:relative">${brand}<h1 class="h1 hero-title">${title}</h1>
-    <p class="tagline">ETA, sealing, truck departure and ETD on one live board. Fed by the Google Sheet you already use.</p></div>
+    <p class="tagline">ETA, sealing, truck departure and ETD on one live board. Slots follow live flight tracking.</p></div>
     ${card}
     <div class="foot" style="position:relative"><div class="chip-row"><span class="c-eta">ETA</span><span class="c-seal">Sealing</span><span class="c-truck">Truck</span><span class="c-etd">ETD</span></div><span class="tagline">Live in under 1 day</span></div></div>`;
 } else if (p === 'timeline') {

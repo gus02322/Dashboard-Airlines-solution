@@ -439,3 +439,16 @@ html.db-lock, html.db-lock body { overflow: hidden; }
 .db.is-tv .now-label { font-size: 18px; }
 .db.is-tv .db-banner { top: 92px; font-size: 22px; padding: 14px 22px; }
 .db:fullscreen { width: 100vw; height: 100vh; }
+
+/* ---------- Live tag on ETA / ETD (live estimates) and Auto on Box Time ---------- */
+.eb-live { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--eta); }
+.eb-live i { position: relative; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+.eb-live i::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: currentColor; animation: lspulse 1.6s ease-out infinite; }
+.eb-auto { color: var(--western); }
+.eblock.past .eb-live i::after { animation: none; }
+.eblock.past .eb-live { color: var(--text-dim); }
+.eblock--list .eb-live { margin-left: auto; }
+.fs-lbl .eb-live { margin-left: 8px; letter-spacing: 0.06em; }
+.db.is-tv .eb-live { font-size: 13px; }
+.db.is-tv .eb-live i { width: 8px; height: 8px; }
+@media (max-width: 559px) { .eb-live { font-size: 12px; } }

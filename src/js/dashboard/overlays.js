@@ -64,7 +64,7 @@ export function createSheet(db, getNow) {
       const diff = t2m(t) - now;
       return `<div class="fs-card c-${k}${diff < 0 ? ' done' : ''}">
         <span class="fs-ic">${icon(ic)}</span>
-        <span class="fs-lbl">${T.long}</span>
+        <span class="fs-lbl">${T.long}${k === 'eta' || k === 'etd' ? '<span class="eb-live mono"><i aria-hidden="true"></i>Live estimate</span>' : ''}</span>
         <span class="fs-time mono">${t}</span>
         <span class="fs-rel mono">${diff < 0 ? 'Done' : rel(diff)}</span>
       </div>`;

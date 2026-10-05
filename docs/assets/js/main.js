@@ -68,6 +68,20 @@ if (dashHost) {
   } else start();
 }
 
+/* ---------- Live slots and config panel (loaded near the viewport) ---------- */
+function lazy(el, load) {
+  if (!el) return;
+  let done = false;
+  const go = () => { if (!done) { done = true; load(el); } };
+  if (location.hash === '#' + el.closest('section')?.id) go();
+  else if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(([en]) => { if (en.isIntersecting) { io.disconnect(); go(); } }, { rootMargin: '600px 0px' });
+    io.observe(el);
+  } else go();
+}
+lazy(document.querySelector('[data-live-slots]'), async (el) => (await import('./live-slots.js')).initLiveSlots(el));
+lazy(document.querySelector('[data-config-panel]'), async (el) => (await import('./config-panel.js')).initConfigPanel(el));
+
 /* ---------- Copilot, ROI, form ---------- */
 const chat = document.querySelector('[data-copilot]');
 if (chat) initCopilot(chat);

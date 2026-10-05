@@ -13,6 +13,7 @@ export default function footer(cfg, { root = '' } = {}) {
     <ul class="footer-links">
       <li><a href="mailto:${esc(c.email)}">${icon('mail')}<span>${esc(c.email)}</span></a></li>
       <li><a href="${esc(c.linkedin)}" rel="noopener" target="_blank">${icon('linkedin')}<span>LinkedIn</span></a></li>
+      <li><a href="${root}privacy/">Security & privacy</a></li>
       <li><a href="${root}legal/">Legal notice</a></li>
     </ul>
   </div>

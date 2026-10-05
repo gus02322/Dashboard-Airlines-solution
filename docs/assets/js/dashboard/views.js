@@ -144,14 +144,18 @@ function renderList(scroll, items, ctx) {
 /* ------------------------------------------------------------
    Ops view
    ------------------------------------------------------------ */
+/* Small pulsing "Live" tag: ETA and ETD are live estimates from flight tracking */
+const LIVE = '<span class="eb-live mono" title="Live estimate from flight tracking"><i aria-hidden="true"></i>Live</span>';
+
 export function renderOps(scroll, ctx) {
   const items = ctx.events.map((e) => {
     const T = EVENT_TYPES[e.type];
+    const live = e.type === 'eta' || e.type === 'etd' ? LIVE : '';
     const label = `${T.long} ${e.f.flight}, ${e.f.airline}, at ${e.time}`;
     return {
       key: e.key, mins: e.mins, color: e.f.color, cls: 'type-' + e.type, flightId: e.f.id, label,
-      html: `<span class="eb-time mono">${e.time}</span><span class="eb-type">${T.label}</span><span class="eb-flight mono">${e.f.flight}</span>${ctx.tv ? '' : `<span class="eb-airline">${esc(e.f.airline)}</span>`}`,
-      listHtml: `<span class="eb-row"><span class="eb-time mono">${e.time}</span><span class="eb-badge">${T.label}</span><span class="eb-flight mono">${e.f.flight}</span></span><span class="eb-airline">${esc(e.f.airline)}</span>`,
+      html: `<span class="eb-time mono">${e.time}${live}</span><span class="eb-type">${T.label}</span><span class="eb-flight mono">${e.f.flight}</span>${ctx.tv ? '' : `<span class="eb-airline">${esc(e.f.airline)}</span>`}`,
+      listHtml: `<span class="eb-row"><span class="eb-time mono">${e.time}</span><span class="eb-badge">${T.label}</span><span class="eb-flight mono">${e.f.flight}</span>${live}</span><span class="eb-airline">${esc(e.f.airline)}</span>`,
     };
   });
   if (!items.length) { scroll.innerHTML = '<p class="db-empty">No events match these filters.</p>'; return { update() {} }; }
@@ -161,6 +165,9 @@ export function renderOps(scroll, ctx) {
 /* ------------------------------------------------------------
    Production view: Box Time slots, D and D-1
    ------------------------------------------------------------ */
+/* Box Time slots are recalculated automatically from live ETA and ETD */
+const AUTO = '<span class="eb-live eb-auto mono" title="Recalculated automatically from live flight tracking"><i aria-hidden="true"></i>Auto</span>';
+
 export function renderProduction(scroll, ctx) {
   const items = ctx.slots.map((sl) => {
     const isD = sl.day === 'D';
@@ -169,8 +176,8 @@ export function renderProduction(scroll, ctx) {
     return {
       key: sl.flightId + '_box', mins: t2m(sl.time), color: sl.color, cls: 'type-box' + (isD ? '' : ' is-d1'), flightId: sl.flightId, label,
       pastable: isD,
-      html: `<span class="eb-time mono">${sl.time} ${badge}</span><span class="eb-type">Box Time</span><span class="eb-flight mono">${sl.flight}</span><span class="eb-airline">${esc(sl.airline)}</span>`,
-      listHtml: `<span class="eb-row"><span class="eb-time mono">${sl.time}</span>${badge}<span class="eb-flight mono">${sl.flight}</span></span><span class="eb-airline">${esc(sl.airline)} · Box Time</span>`,
+      html: `<span class="eb-time mono">${sl.time} ${badge}${AUTO}</span><span class="eb-type">Box Time</span><span class="eb-flight mono">${sl.flight}</span><span class="eb-airline">${esc(sl.airline)}</span>`,
+      listHtml: `<span class="eb-row"><span class="eb-time mono">${sl.time}</span>${badge}<span class="eb-flight mono">${sl.flight}</span>${AUTO}</span><span class="eb-airline">${esc(sl.airline)} · Box Time</span>`,
     };
   });
   if (!items.length) { scroll.innerHTML = '<p class="db-empty">No production slots match these filters.</p>'; return { update() {} }; }

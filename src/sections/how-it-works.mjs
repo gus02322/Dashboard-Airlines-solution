@@ -1,10 +1,10 @@
 import { esc, icon } from './_helpers.mjs';
 import head from './_head.mjs';
 
-/** 6. How it works: three steps. */
+/** How it works: three steps. */
 export default function howItWorks(cfg) {
   const h = cfg.howItWorks;
-  const icons = ['sheet', 'link', 'check'];
+  const icons = ['box', 'sliders', 'tv'];
   return `
 <section class="section how" id="how" aria-labelledby="how-title">
   <div class="container">

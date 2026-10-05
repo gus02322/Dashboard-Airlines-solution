@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OpsRamp | Live operations board for airline catering</title>
-<meta name="description" content="A real-time board for airline catering: ETA, sealing, truck departure and ETD on one screen. Fed by a Google Sheet. Live in under a day.">
+<meta name="description" content="A real-time board for airline catering: live estimated ETA and ETD from flight tracking, sealing and truck slots that adjust on their own, in your own private workspace.">
 <link rel="canonical" href="https://gus02322.github.io/Dashboard-Airlines-solution/">
 <meta name="theme-color" content="#13161e">
 <meta name="color-scheme" content="dark">
@@ -16,7 +16,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="OpsRamp">
 <meta property="og:title" content="OpsRamp | Live operations board for airline catering">
-<meta property="og:description" content="A real-time board for airline catering: ETA, sealing, truck departure and ETD on one screen. Fed by a Google Sheet. Live in under a day.">
+<meta property="og:description" content="A real-time board for airline catering: live estimated ETA and ETD from flight tracking, sealing and truck slots that adjust on their own, in your own private workspace.">
 <meta property="og:url" content="https://gus02322.github.io/Dashboard-Airlines-solution/">
 <meta property="og:image" content="https://gus02322.github.io/Dashboard-Airlines-solution/assets/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -24,9 +24,9 @@
 <meta property="og:image:alt" content="OpsRamp live operations board with the NOW line and colour-coded flight milestones">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="OpsRamp | Live operations board for airline catering">
-<meta name="twitter:description" content="A real-time board for airline catering: ETA, sealing, truck departure and ETD on one screen. Fed by a Google Sheet. Live in under a day.">
+<meta name="twitter:description" content="A real-time board for airline catering: live estimated ETA and ETD from flight tracking, sealing and truck slots that adjust on their own, in your own private workspace.">
 <meta name="twitter:image" content="https://gus02322.github.io/Dashboard-Airlines-solution/assets/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"OpsRamp","applicationCategory":"BusinessApplication","applicationSubCategory":"Airline catering operations","operatingSystem":"Web browser","description":"A real-time board for airline catering: ETA, sealing, truck departure and ETD on one screen. Fed by a Google Sheet. Live in under a day.","url":"https://gus02322.github.io/Dashboard-Airlines-solution/","image":"https://gus02322.github.io/Dashboard-Airlines-solution/assets/og-image.png","offers":{"@type":"Offer","url":"https://gus02322.github.io/Dashboard-Airlines-solution/#pricing","availability":"https://schema.org/InStock"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"OpsRamp","applicationCategory":"BusinessApplication","applicationSubCategory":"Airline catering operations","operatingSystem":"Web browser","description":"A real-time board for airline catering: live estimated ETA and ETD from flight tracking, sealing and truck slots that adjust on their own, in your own private workspace.","url":"https://gus02322.github.io/Dashboard-Airlines-solution/","image":"https://gus02322.github.io/Dashboard-Airlines-solution/assets/og-image.png"}</script>
 <script id="site-config" type="application/json">{"email":"augustin@de-franssu.com","formProvider":"mailto","formspreeEndpoint":"https://formspree.io/f/YOUR_FORM_ID","cta":{"success":"Thank you. Your request is in. We will reply within one working day.","error":"Sending failed. Your email app will open with the message ready to send."},"roi":{"eyebrow":"Your numbers","title":"What is one late truck worth to you?","text":"Use your own numbers. This is an estimate, not a promise.","defaults":{"flightsPerDay":30,"incidentsPerMonth":6,"costPerIncident":800,"avoidablePct":25},"currency":"$","disclaimer":"Estimate only. The avoidable share is an assumption you control. OpsRamp does not guarantee a specific reduction."},"copilot":{"questions":["What leaves in the next 2 hours?","Which flights are at risk?","How many Halal meals today?"]}}</script>
 <script type="module" src="assets/js/main.js"></script>
 </head>
@@ -40,7 +40,7 @@
     </a>
     <nav class="nav-menu" id="nav-menu" aria-label="Main">
       <ul>
-        <li><a href="#demo">Demo</a></li><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li>
+        <li><a href="#demo">Demo</a></li><li><a href="#live-slots">Live slots</a></li><li><a href="#config">Config</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li>
       </ul>
       <a class="btn btn--primary btn--sm nav-cta-mobile" href="#contact">Book a demo</a>
     </nav>
@@ -57,7 +57,7 @@
     <div class="hero-copy">
       <p class="eyebrow eyebrow--live"><span class="live-dot" aria-hidden="true"></span>Live operations board for airline catering</p>
       <h1 class="h1 hero-title" id="hero-title"><span class="hero-line">Every flight.</span> <span class="hero-line">Every milestone.</span> <span class="hero-line is-accent">One screen.</span></h1>
-      <p class="lead hero-sub">OpsRamp turns the Google Sheet you already use into a live board for ETA, sealing, truck departure and ETD. The kitchen, the dispatch desk and the ramp all see the same clock.</p>
+      <p class="lead hero-sub">ETA, sealing, truck departure and ETD on one live board. Arrival and departure estimates follow live flight tracking, and your slots adjust on their own. The kitchen, the dispatch desk and the ramp all see the same clock.</p>
       <div class="hero-ctas">
         <a class="btn btn--primary" href="#contact">Book a demo</a>
         <a class="btn btn--ghost" href="#demo"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 5v14l11-7z"/></svg>Try the live demo</a>
@@ -98,7 +98,7 @@
     <ol class="problem-list">
       <li class="problem-item reveal" style="--d:0ms">
         <span class="problem-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="3.5" width="16" height="17" rx="1.5"/><path d="M4 9h16M4 14.5h16M10 3.5v17"/></svg></span>
-        <div><h3 class="h3">The plan lives in a spreadsheet</h3><p>Someone updated it at 6am. Nobody on the floor has opened it since.</p></div>
+        <div><h3 class="h3">The plan is out of date by 7am</h3><p>Someone updated it at 6am. Nobody on the floor has opened it since.</p></div>
       </li><li class="problem-item reveal" style="--d:90ms">
         <span class="problem-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5.5h16v10H10l-4.5 4v-4H4z"/><path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01"/></svg></span>
         <div><h3 class="h3">Changes travel by WhatsApp and radio</h3><p>A new ETA lands in one chat, the truck driver reads another.</p></div>
@@ -123,12 +123,206 @@
       </div>
     </div>
     <div class="demo-share">
-      <p class="demo-note">Sample schedule. Flight numbers and times are fictional.</p>
+      <p class="demo-note">Sample schedule. Flight numbers and times are fictional. ETA and ETD marked Live are live estimates.</p>
       <div class="demo-share-links">
         <a class="link-btn" href="demo/"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>Open full screen</span></a>
         <button type="button" class="link-btn" data-copy-link="demo/"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><span>Copy link</span></button>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="section lslots" id="live-slots" aria-labelledby="ls-title">
+  <div class="container lslots-grid">
+    <div class="lslots-copy reveal">
+      <p class="eyebrow">Live slots</p>
+      <h2 class="h2" id="ls-title">Slots that move with the aircraft.</h2>
+      <p class="lead">OpsRamp follows each inbound aircraft with live flight tracking. When the live estimated ETA moves, the estimated departure, the Box Time slot and the truck departure move with it. Nobody has to call the kitchen.</p>
+      <ul class="ticks">
+        <li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Live estimated ETA and ETD, refreshed from live aircraft tracking (ADS-B)</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Box Time and truck slots recalculated from your own timing rules</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>The change shows on every screen at once, with an alert if a slot gets tight</span></li>
+      </ul>
+      <p class="honesty">Live estimates are computed from the real position of the aircraft. They are not official airline schedules and can move as the flight progresses.</p>
+    </div>
+    <div class="ls-card reveal" data-live-slots>
+      <div class="ls-top">
+        <span class="ls-flight"><span class="ls-dot" aria-hidden="true"></span><span class="mono">EK 230</span><span class="ls-al">Emirates · inbound</span></span>
+        <span class="ls-badge mono" data-badge><span class="ls-pulse" aria-hidden="true"></span><span data-badge-txt>Live</span></span>
+      </div>
+      <div class="ls-map">
+        <svg viewBox="0 0 560 210" role="img" aria-label="Map: the inbound aircraft flies along an arc towards the airport">
+          <defs>
+            <pattern id="ls-grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#262b39" stroke-width="1"/></pattern>
+          </defs>
+          <rect width="560" height="210" fill="url(#ls-grid)"/>
+          <circle cx="516" cy="160" r="44" class="ls-ring"/>
+          <circle cx="516" cy="160" r="88" class="ls-ring"/>
+          <path d="M36 176 Q 270 -18 516 160" class="ls-route" data-route/>
+          <path d="M36 176 Q 270 -18 516 160" class="ls-done" data-done/>
+          <circle cx="36" cy="176" r="4" class="ls-origin"/>
+          <g class="ls-apt"><circle cx="516" cy="160" r="7"/><circle cx="516" cy="160" r="2.5"/></g>
+          <text x="516" y="196" text-anchor="middle" class="ls-apt-lbl">HUB</text>
+          <g class="ls-plane" data-plane><g transform="translate(-14 -14) scale(1.15)" fill="#13161e" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M10.5 13.5 3 11l1.5-1.5 7.5 1L16.5 6a2 2 0 0 1 3 3L15 13.5l1 7.5-1.5 1.5-2.5-7.5L9 18v2.5L7.5 22 6 18l-4-1.5 1.5-1.5H6z"/></g></g>
+        </svg>
+        <p class="ls-clock mono"><span data-clock>07:00</span><span class="ls-speed">sample flight · time ×12</span></p>
+      </div>
+      <div class="ls-eta">
+        <div>
+          <p class="ls-k">Live estimated ETA</p>
+          <p class="ls-eta-time mono" data-eta>07:55</p>
+        </div>
+        <div class="ls-eta-right">
+          <p class="ls-count mono" data-count>in 55 min</p>
+          <p class="ls-src mono"><span data-ping>Position updated 1 s ago</span> · live aircraft tracking (ADS-B)</p>
+        </div>
+      </div>
+      <ul class="ls-slots">
+        <li class="ls-slot" data-slot="eta" style="--c:var(--eta)">
+          <span class="ls-slot-lbl">ETA<span class="ls-livetag mono"><span class="ls-pulse" aria-hidden="true"></span>Live</span></span>
+          <span class="ls-slot-time mono" data-time>--:--</span>
+          <span class="ls-slot-sub mono" data-sub></span>
+        </li>
+        <li class="ls-slot" data-slot="box" style="--c:var(--western)">
+          <span class="ls-slot-lbl">Box Time</span>
+          <span class="ls-slot-time mono" data-time>--:--</span>
+          <span class="ls-slot-sub mono" data-sub></span>
+        </li>
+        <li class="ls-slot" data-slot="truck" style="--c:var(--truck)">
+          <span class="ls-slot-lbl">Truck departure</span>
+          <span class="ls-slot-time mono" data-time>--:--</span>
+          <span class="ls-slot-sub mono" data-sub></span>
+        </li>
+        <li class="ls-slot" data-slot="etd" style="--c:var(--etd)">
+          <span class="ls-slot-lbl">ETD<span class="ls-livetag mono"><span class="ls-pulse" aria-hidden="true"></span>Live</span></span>
+          <span class="ls-slot-time mono" data-time>--:--</span>
+          <span class="ls-slot-sub mono" data-sub></span>
+        </li>
+      </ul>
+      <div class="ls-track" aria-hidden="true">
+        <div class="ls-axis mono"></div>
+        <span class="ls-now" data-now></span>
+        <span class="ls-mk" data-mk="eta" style="--c:var(--eta)"></span>
+        <span class="ls-mk" data-mk="box" style="--c:var(--western)"></span>
+        <span class="ls-mk" data-mk="truck" style="--c:var(--truck)"></span>
+        <span class="ls-mk" data-mk="etd" style="--c:var(--etd)"></span>
+      </div>
+      <div class="ls-actions">
+        <button type="button" class="btn btn--primary btn--sm" data-delay><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>Simulate a delay</button>
+        <button type="button" class="btn btn--ghost btn--sm" data-reset disabled><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4.5 4.5v4h4"/></svg>Reset</button>
+      </div>
+      <p class="ls-rule mono">Rules: ground time 2h30 · Box Time = ETD − 2h00 · Truck = ETD − 1h15</p>
+      <p class="sr-only" role="status" aria-live="polite" data-announce></p>
+    </div>
+  </div>
+</section>
+
+<section class="section cpanel" id="config" aria-labelledby="cp-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Config panel<span class="tag-early mono">Early access</span></p>
+      <h2 class="h2" id="cp-title">Your operation, your rules.</h2>
+      <p class="lead">Your flights, timings and alerts live in your own online workspace. Edit them in a simple panel and the board follows at once. Try it: add a flight or move a rule.</p>
+    </div>
+    <div class="cp reveal" data-config-panel>
+      <div class="cp-panel">
+        <div class="cp-top">
+          <span class="cp-ws mono"><span class="logo-mark" aria-hidden="true"></span>Workspace · Sample hub</span>
+          <span class="cp-saved mono" data-saved aria-live="polite">All changes saved</span>
+        </div>
+        <div class="cp-tabs" role="tablist" aria-label="Settings">
+          <button type="button" role="tab" class="cp-tab" id="cp-tab-flights" aria-controls="cp-pane-flights" aria-selected="true" tabindex="0" data-tab="flights"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.5 13.5 3 11l1.5-1.5 7.5 1L16.5 6a2 2 0 0 1 3 3L15 13.5l1 7.5-1.5 1.5-2.5-7.5L9 18v2.5L7.5 22 6 18l-4-1.5 1.5-1.5H6z"/></svg><span>Flights</span></button><button type="button" role="tab" class="cp-tab" id="cp-tab-rules" aria-controls="cp-pane-rules" aria-selected="false" tabindex="-1" data-tab="rules"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg><span>Timing rules</span></button><button type="button" role="tab" class="cp-tab" id="cp-tab-alerts" aria-controls="cp-pane-alerts" aria-selected="false" tabindex="-1" data-tab="alerts"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg><span>Alerts</span></button><button type="button" role="tab" class="cp-tab" id="cp-tab-display" aria-controls="cp-pane-display" aria-selected="false" tabindex="-1" data-tab="display"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M8.5 20h7M12 16.5V20"/></svg><span>Display</span></button>
+        </div>
+        <div class="cp-pane" role="tabpanel" id="cp-pane-flights" aria-labelledby="cp-tab-flights" tabindex="0"></div><div class="cp-pane" role="tabpanel" id="cp-pane-rules" aria-labelledby="cp-tab-rules" tabindex="0" hidden></div><div class="cp-pane" role="tabpanel" id="cp-pane-alerts" aria-labelledby="cp-tab-alerts" tabindex="0" hidden></div><div class="cp-pane" role="tabpanel" id="cp-pane-display" aria-labelledby="cp-tab-display" tabindex="0" hidden></div>
+        <noscript><p class="cp-noscript">The interactive mockup needs JavaScript.</p></noscript>
+      </div>
+      <div class="cp-preview" aria-label="Board preview">
+        <div class="cpv-top">
+          <span class="cpv-title"><span class="live-dot" aria-hidden="true"></span>Board preview</span>
+          <div class="cpv-days" role="group" aria-label="Preview day"></div>
+        </div>
+        <div class="cpv-legend mono" aria-hidden="true"><span class="c-eta">ETA</span><span class="c-seal">Sealing</span><span class="c-truck">Truck</span><span class="c-etd">ETD</span><span class="c-bell">Alert</span></div>
+        <div class="cpv-axis mono" aria-hidden="true"></div>
+        <ul class="cpv-rows"></ul>
+        <div class="cpv-alert" hidden role="alert"></div>
+      </div>
+    </div>
+    <p class="cp-note">Mockup with sample data. The online config panel is in early access.</p>
+  </div>
+</section>
+
+<section class="section copilot" id="copilot" aria-labelledby="copilot-title">
+  <div class="container copilot-grid">
+    <div class="copilot-copy reveal">
+      <p class="eyebrow">AI Copilot · MCP</p>
+      <h2 class="h2" id="copilot-title">Connect your own AI via MCP.</h2>
+      <p class="lead">OpsRamp plugs into the AI assistant your team already uses, through the open MCP protocol. Ask it about today&#39;s flights in plain English. It answers from your live board.</p>
+      <ol class="mcp-flow" aria-label="How the connection works">
+        <li class="mcp-step"><span class="mcp-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4v16M4 8h9M4 13h14M4 18h6"/><circle cx="4" cy="11" r="0.5"/></svg></span><span>OpsRamp data</span></li><li class="mcp-step is-mid"><span class="mcp-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><span>MCP connection</span></li><li class="mcp-step"><span class="mcp-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5.5h16v10H10l-4.5 4v-4H4z"/><path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01"/></svg></span><span>Your AI assistant</span></li>
+      </ol>
+      <ul class="ticks">
+        <li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Works with your own AI subscription. OpsRamp bills no AI costs.</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>We set up the connection for you. Setup is included.</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>The Copilot works through MCP only. Nothing extra to install on the board.</span></li>
+      </ul>
+    </div>
+    <div class="chat-wrap reveal">
+      <p class="chat-example"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg>Example of what your own AI assistant can answer once connected</p>
+      <div class="chat" data-copilot>
+        <div class="chat-top">
+          <span class="chat-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5.5h16v10H10l-4.5 4v-4H4z"/><path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01"/></svg></span>
+          <span class="chat-name">Your AI assistant</span>
+          <span class="chat-mcp mono"><span class="live-dot" aria-hidden="true"></span>OpsRamp via MCP</span>
+          <span class="chat-time mono">Board 10:40</span>
+        </div>
+        <div class="chat-log" role="log" aria-live="polite" aria-label="Example conversation">
+          <div class="msg msg--bot"><p>Connected to OpsRamp. I can see today's <span data-count></span> flights. Ask me anything about the schedule.</p></div>
+        </div>
+        <div class="chat-suggest" role="group" aria-label="Suggested questions">
+          <button type="button" class="chip-q" data-q="0">What leaves in the next 2 hours?</button><button type="button" class="chip-q" data-q="1">Which flights are at risk?</button><button type="button" class="chip-q" data-q="2">How many Halal meals today?</button>
+        </div>
+        <p class="chat-note">Scripted demo. Answers are computed from the sample schedule above.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section privacy" id="privacy" aria-labelledby="privacy-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Data &amp; privacy</p>
+      <h2 class="h2" id="privacy-title">Your data stays yours.</h2>
+      <p class="lead">OpsRamp is designed around five principles. They shape how the product is built, not just how it is sold.</p>
+    </div>
+    <ul class="principles">
+      <li class="principle reveal" style="--d:0ms">
+        <span class="pr-num mono">01</span>
+        <span class="pr-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg></span>
+        <h3 class="h3">An isolated workspace</h3>
+        <p>Each customer has its own workspace and its own database. Your data is never visible to another customer.</p>
+      </li><li class="principle reveal" style="--d:80ms">
+        <span class="pr-num mono">02</span>
+        <span class="pr-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="m6 6 12 12"/></svg></span>
+        <h3 class="h3">Never sold, never used to train AI</h3>
+        <p>Your schedule is used to run your board. It is never resold and never used to train AI models.</p>
+      </li><li class="principle reveal" style="--d:160ms">
+        <span class="pr-num mono">03</span>
+        <span class="pr-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="1.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg></span>
+        <h3 class="h3">Encrypted in transit and at rest</h3>
+        <p>Data is encrypted on its way to your screens and where it is stored.</p>
+      </li><li class="principle reveal" style="--d:0ms">
+        <span class="pr-num mono">04</span>
+        <span class="pr-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.2"/><path d="M3 19.5c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M15.5 4.9a3.2 3.2 0 0 1 0 6.2M17.5 14.3c2 .7 3.5 2.6 3.5 5.2"/></svg></span>
+        <h3 class="h3">Access per user, with roles</h3>
+        <p>Admin, supervisor, and read only for TV screens. Everyone sees what their role needs.</p>
+      </li><li class="principle reveal" style="--d:80ms">
+        <span class="pr-num mono">05</span>
+        <span class="pr-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5"/><path d="M4.5 19.5h15"/></svg></span>
+        <h3 class="h3">Export and deletion on request</h3>
+        <p>Ask for a full export of your data, or for its deletion, at any time.</p>
+      </li>
+      <li class="principle principle--link reveal" style="--d:160ms">
+        <span class="pr-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.2 7.5 9.5 4.3-1.3 7.5-4.9 7.5-9.5V6z"/></svg></span>
+        <p>How each principle is applied: hosting, encryption, access, retention.</p>
+        <a class="btn btn--ghost btn--sm" href="privacy/">Security &amp; privacy details<svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -145,51 +339,27 @@
         <h3 class="h3">The whole day at a glance</h3>
         <p>Every ETA, sealing, truck and ETD on one live timeline. The NOW line shows exactly where you are.</p>
       </li><li class="feature reveal" style="--d:80ms;--tint:var(--seal)">
+        <span class="feature-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 18 6"/></svg></span>
+        <h3 class="h3">Slots that follow the aircraft</h3>
+        <p>Live estimated ETA and ETD from live flight tracking. Box Time and truck slots shift on their own.</p>
+      </li><li class="feature reveal" style="--d:160ms;--tint:var(--etd)">
         <span class="feature-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span>
         <h3 class="h3">Late becomes rare</h3>
-        <p>A full-screen alert with sound 15 minutes before every sealing and truck departure. Nobody has to remember.</p>
-      </li><li class="feature reveal" style="--d:160ms;--tint:var(--etd)">
-        <span class="feature-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M8.5 20h7M12 16.5V20"/></svg></span>
-        <h3 class="h3">Readable from across the kitchen</h3>
-        <p>A TV view built for factory screens. Big type, high contrast, no clicking.</p>
+        <p>A full-screen alert with sound before every sealing and truck departure. You choose how early. Nobody has to remember.</p>
       </li><li class="feature reveal" style="--d:0ms;--tint:var(--eta)">
-        <span class="feature-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg></span>
-        <h3 class="h3">Supervisors stay in the loop</h3>
-        <p>The same board on any phone, laid out as a simple list. No app to install.</p>
+        <span class="feature-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M8.5 20h7M12 16.5V20"/></svg></span>
+        <h3 class="h3">Kitchen TV and supervisor phones</h3>
+        <p>A TV view built for factory screens, and the same board on any phone as a simple list. No app to install.</p>
       </li><li class="feature reveal" style="--d:80ms;--tint:var(--now)">
+        <span class="feature-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></span>
+        <h3 class="h3">Your own private workspace</h3>
+        <p>Flights, timing rules and alerts live in your own workspace. Change them in a simple panel, the board follows.</p>
+      </li><li class="feature reveal" style="--d:160ms;--tint:var(--accent)">
         <span class="feature-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg></span>
         <h3 class="h3">Ask the board a question</h3>
-        <p>The AI Copilot knows today&#39;s flights. Ask what leaves next or how many halal meals are due.</p>
-      </li><li class="feature reveal" style="--d:160ms;--tint:var(--accent)">
-        <span class="feature-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="1.5"/><path d="M3.5 9.5h17M9.5 3.5v17"/></svg></span>
-        <h3 class="h3">Edit a cell, everyone sees it</h3>
-        <p>Your schedule stays in Google Sheets. Change a time, the board updates for the whole team.</p>
+        <p>The Ops Copilot answers from today&#39;s flights inside the AI assistant you already use. Works via MCP only.</p>
       </li>
     </ul>
-  </div>
-</section>
-
-<section class="section copilot" id="copilot" aria-labelledby="copilot-title">
-  <div class="container copilot-grid">
-    <div class="copilot-copy reveal">
-      <p class="eyebrow">AI Copilot</p>
-      <h2 class="h2" id="copilot-title">Ask in plain English. Get the answer from today&#39;s schedule.</h2>
-      <p class="lead">The Copilot reads the same data as the board. No searching, no scrolling, no calling the office.</p>
-    </div>
-    <div class="chat reveal" data-copilot>
-      <div class="chat-top">
-        <span class="chat-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg></span>
-        <span class="chat-name">Ops Copilot</span>
-        <span class="chat-time mono">Board time 10:40</span>
-      </div>
-      <div class="chat-log" role="log" aria-live="polite" aria-label="Copilot conversation">
-        <div class="msg msg--bot"><p>Hi. I can see today's <span data-count></span> flights. Ask me anything about the schedule.</p></div>
-      </div>
-      <div class="chat-suggest" role="group" aria-label="Suggested questions">
-        <button type="button" class="chip-q" data-q="0">What leaves in the next 2 hours?</button><button type="button" class="chip-q" data-q="1">Which flights are at risk?</button><button type="button" class="chip-q" data-q="2">How many Halal meals today?</button>
-      </div>
-      <p class="chat-note">Demo answers are generated from the sample schedule above.</p>
-    </div>
   </div>
 </section>
 
@@ -197,22 +367,22 @@
   <div class="container">
     <div class="section-head reveal">
       <p class="eyebrow">How it works</p>
-      <h2 class="h2" id="how-title">Live in under 1 day. No IT project.</h2>
+      <h2 class="h2" id="how-title">Fast to start. No IT project.</h2>
       
     </div>
     <ol class="steps">
       <li class="step reveal" style="--d:0ms">
-        <div class="step-top"><span class="step-num mono">01</span><span class="step-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="3.5" width="16" height="17" rx="1.5"/><path d="M4 9h16M4 14.5h16M10 3.5v17"/></svg></span></div>
-        <h3 class="h3">Connect your sheet</h3>
-        <p>Keep your existing Google Sheet. We map your columns once: flight, airline, times, days.</p>
+        <div class="step-top"><span class="step-num mono">01</span><span class="step-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg></span></div>
+        <h3 class="h3">Create your workspace</h3>
+        <p>We open your private workspace with you. No servers, no software to install, no IT project.</p>
       </li><li class="step reveal" style="--d:110ms">
-        <div class="step-top"><span class="step-num mono">02</span><span class="step-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span></div>
-        <h3 class="h3">Open the link</h3>
-        <p>One secure link for the office, the kitchen TV and every supervisor phone.</p>
+        <div class="step-top"><span class="step-num mono">02</span><span class="step-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></span></div>
+        <h3 class="h3">Enter your flights and timings</h3>
+        <p>Add your flights and set your timing rules in the config panel. It takes minutes, not a training course.</p>
       </li><li class="step reveal" style="--d:220ms">
-        <div class="step-top"><span class="step-num mono">03</span><span class="step-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span></div>
-        <h3 class="h3">Your team is live</h3>
-        <p>The board updates itself. Alerts start firing the same day.</p>
+        <div class="step-top"><span class="step-num mono">03</span><span class="step-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="12" rx="1.5"/><path d="M8.5 20h7M12 16.5V20"/></svg></span></div>
+        <h3 class="h3">Your team is live on any screen</h3>
+        <p>Open the board on the office PC, the kitchen TV and every supervisor phone. Alerts start the same day.</p>
       </li>
     </ol>
   </div>
@@ -275,24 +445,10 @@
         <caption class="sr-only">Where OpsRamp fits</caption>
         <thead><tr><td></td><th scope="col">Spreadsheets + WhatsApp</th><th scope="col" class="is-hi">OpsRamp</th><th scope="col">Enterprise suites</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Price</th><td data-label="Spreadsheets + WhatsApp">Free</td><td data-label="OpsRamp" class="is-hi">Monthly subscription</td><td data-label="Enterprise suites">Large licence, often per site</td></tr><tr><th scope="row">Time to go live</th><td data-label="Spreadsheets + WhatsApp">Already there</td><td data-label="OpsRamp" class="is-hi">Under 1 day</td><td data-label="Enterprise suites">Weeks to months</td></tr><tr><th scope="row">Training</th><td data-label="Spreadsheets + WhatsApp">None, but no live view</td><td data-label="OpsRamp" class="is-hi">None needed</td><td data-label="Enterprise suites">Formal training</td></tr><tr><th scope="row">Mobile and TV</th><td data-label="Spreadsheets + WhatsApp">Phone only, no alerts</td><td data-label="OpsRamp" class="is-hi">Both, with alerts</td><td data-label="Enterprise suites">Varies by module</td></tr><tr><th scope="row">Fits a small team</th><td data-label="Spreadsheets + WhatsApp">Yes</td><td data-label="OpsRamp" class="is-hi">Yes</td><td data-label="Enterprise suites">Built for large operations</td></tr>
+          <tr><th scope="row">Pricing model</th><td data-label="Spreadsheets + WhatsApp">Free</td><td data-label="OpsRamp" class="is-hi">Tailored to your operation</td><td data-label="Enterprise suites">Large licence, often per site</td></tr><tr><th scope="row">Live ETA and ETD</th><td data-label="Spreadsheets + WhatsApp">Updated by hand, by phone or chat</td><td data-label="OpsRamp" class="is-hi">Live estimates from flight tracking</td><td data-label="Enterprise suites">Varies by vendor</td></tr><tr><th scope="row">Time to go live</th><td data-label="Spreadsheets + WhatsApp">Already there</td><td data-label="OpsRamp" class="is-hi">Fast, no IT project</td><td data-label="Enterprise suites">Weeks to months</td></tr><tr><th scope="row">Training</th><td data-label="Spreadsheets + WhatsApp">None, but no live view</td><td data-label="OpsRamp" class="is-hi">A short walkthrough</td><td data-label="Enterprise suites">Formal training</td></tr><tr><th scope="row">Mobile and TV</th><td data-label="Spreadsheets + WhatsApp">Phone only, no alerts</td><td data-label="OpsRamp" class="is-hi">Both, with alerts</td><td data-label="Enterprise suites">Varies by module</td></tr><tr><th scope="row">AI assistant</th><td data-label="Spreadsheets + WhatsApp">None</td><td data-label="OpsRamp" class="is-hi">Your own AI, connected via MCP</td><td data-label="Enterprise suites">Varies by vendor</td></tr><tr><th scope="row">Fits a small team</th><td data-label="Spreadsheets + WhatsApp">Yes</td><td data-label="OpsRamp" class="is-hi">Yes</td><td data-label="Enterprise suites">Built for large operations</td></tr>
         </tbody>
       </table>
     </div>
-  </div>
-</section>
-
-<section class="section proof" id="proof" aria-labelledby="proof-title">
-  <div class="container">
-    <div class="proof-card reveal">
-      <p class="eyebrow">In production</p>
-      <h2 class="h2" id="proof-title">Built on the ramp, not in a boardroom.</h2>
-      <p class="lead">Built by an airline catering operations manager. Used daily at a major international hub.</p>
-      <dl class="proof-stats">
-        <div><dt class="sr-only">daily users</dt><dd><span class="proof-val">~50</span><span class="proof-lbl" aria-hidden="true">daily users</span></dd></div><div><dt class="sr-only">several locations on one board</dt><dd><span class="proof-val">Multi-site</span><span class="proof-lbl" aria-hidden="true">several locations on one board</span></dd></div><div><dt class="sr-only">event types tracked per flight</dt><dd><span class="proof-val">4</span><span class="proof-lbl" aria-hidden="true">event types tracked per flight</span></dd></div>
-      </dl>
-    </div>
-    
   </div>
 </section>
 
@@ -300,36 +456,28 @@
   <div class="container">
     <div class="section-head reveal">
       <p class="eyebrow">Pricing</p>
-      <h2 class="h2" id="pricing-title">Simple pricing</h2>
-      <p class="lead">No setup project, no long contract. Prices exclude taxes.</p>
+      <h2 class="h2" id="pricing-title">Custom pricing</h2>
+      <p class="lead">Priced to your operation: number of flights, sites and users.</p>
     </div>
-    <ul class="plans">
-      <li class="plan reveal" style="--d:0ms">
-        
-        <h3 class="plan-name">Starter</h3>
-        <p class="plan-tag">One site, one kitchen.</p>
-        <p class="plan-price"><span class="plan-amount">$290</span><span class="plan-period">/ month</span></p>
-        <p class="plan-example mono">Example price</p>
-        <ul class="plan-feats"><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>1 location</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Live board, mobile and TV views</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Sealing and truck alerts</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Email support</span></li></ul>
-        <a class="btn btn--ghost" href="#contact" data-plan="Starter">Book a demo</a>
-      </li><li class="plan is-hi reveal" style="--d:90ms">
-        <p class="plan-flag">Most teams start here</p>
-        <h3 class="plan-name">Operations</h3>
-        <p class="plan-tag">For busy hubs with several teams.</p>
-        <p class="plan-price"><span class="plan-amount">$690</span><span class="plan-period">/ month</span></p>
-        <p class="plan-example mono">Example price</p>
-        <ul class="plan-feats"><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Up to 3 locations</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Everything in Starter</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>AI Copilot</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Production and week views</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Priority support</span></li></ul>
-        <a class="btn btn--primary" href="#contact" data-plan="Operations">Book a demo</a>
-      </li><li class="plan reveal" style="--d:180ms">
-        
-        <h3 class="plan-name">Enterprise</h3>
-        <p class="plan-tag">Multi-country, custom integrations.</p>
-        <p class="plan-price"><span class="plan-amount">Custom</span></p>
-        
-        <ul class="plan-feats"><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Unlimited locations</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Custom data sources</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Onboarding on site</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Dedicated contact</span></li></ul>
-        <a class="btn btn--ghost" href="#contact" data-plan="Enterprise">Talk to us</a>
+    <ul class="criteria">
+      <li class="criterion reveal" style="--d:0ms">
+        <span class="crit-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10.5 13.5 3 11l1.5-1.5 7.5 1L16.5 6a2 2 0 0 1 3 3L15 13.5l1 7.5-1.5 1.5-2.5-7.5L9 18v2.5L7.5 22 6 18l-4-1.5 1.5-1.5H6z"/></svg></span>
+        <h3 class="h3">Flights per day</h3>
+        <p>From a single kitchen with a handful of departures to a busy hub.</p>
+      </li><li class="criterion reveal" style="--d:90ms">
+        <span class="crit-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span>
+        <h3 class="h3">Sites</h3>
+        <p>One location, or several on the same board.</p>
+      </li><li class="criterion reveal" style="--d:180ms">
+        <span class="crit-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.2"/><path d="M3 19.5c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M15.5 4.9a3.2 3.2 0 0 1 0 6.2M17.5 14.3c2 .7 3.5 2.6 3.5 5.2"/></svg></span>
+        <h3 class="h3">Users and screens</h3>
+        <p>Office seats, supervisor phones and kitchen TVs.</p>
       </li>
     </ul>
+    <div class="quote-bar reveal">
+      <p>Always included: setup with your team, the MCP connection to your own AI, and email support.</p>
+      <a class="btn btn--primary" href="#contact" data-plan="Custom quote">Request a quote<svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
   </div>
 </section>
 
@@ -343,19 +491,22 @@
     <div class="faq-list reveal">
       <details class="faq-item">
         <summary><span>Is our schedule data secure?</span><span class="faq-plus" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>Your data stays in your own Google Sheet, under your Google account permissions. OpsRamp only reads the published schedule. No passenger data is needed.</p></div>
+        <div class="faq-a"><p>Each customer has an isolated workspace with its own database. Data is encrypted in transit and at rest, access is per user with roles, and no passenger data is needed. The details are on the Security &amp; privacy page.</p></div>
       </details><details class="faq-item">
-        <summary><span>Where is it hosted?</span><span class="faq-plus" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>OpsRamp is a web app served over HTTPS from a global CDN. Nothing to install on your servers. Private hosting can be discussed on the Enterprise plan.</p></div>
+        <summary><span>Where do the live ETA and ETD come from?</span><span class="faq-plus" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>From live aircraft tracking (ADS-B). OpsRamp estimates arrival and departure times from the real position of the aircraft. These are live estimates, not official airline schedules, and they can move as the flight progresses.</p></div>
+      </details><details class="faq-item">
+        <summary><span>Who pays for the AI?</span><span class="faq-plus" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>You do, through your own AI subscription. OpsRamp only bills access and setup, never AI usage.</p></div>
+      </details><details class="faq-item">
+        <summary><span>Do we need an IT project or special training?</span><span class="faq-plus" aria-hidden="true"></span></summary>
+        <div class="faq-a"><p>No. OpsRamp runs in a web browser on PCs, phones and TVs. We create your workspace with you, and your flights and timings go in the config panel. A short walkthrough is enough for the team.</p></div>
       </details><details class="faq-item">
         <summary><span>Can we adapt it to our operation?</span><span class="faq-plus" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>Yes. Airlines, colours, alert timing, meal types and views are configured for your site during setup.</p></div>
+        <div class="faq-a"><p>Yes. Airlines, colours, meal types, alert timing and the rules behind sealing and truck slots, per aircraft size, are all set in your workspace.</p></div>
       </details><details class="faq-item">
         <summary><span>What support do we get?</span><span class="faq-plus" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>Email support on every plan, with priority response on Operations. Setup is done with you, not handed over as a manual.</p></div>
-      </details><details class="faq-item">
-        <summary><span>Does it integrate with our systems?</span><span class="faq-plus" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>It starts from a Google Sheet, which any system can export to. Direct connections to other data sources are available on Enterprise.</p></div>
+        <div class="faq-a"><p>Setup is done with you, not handed over as a manual. Email support is included.</p></div>
       </details><details class="faq-item">
         <summary><span>Can we try it first?</span><span class="faq-plus" aria-hidden="true"></span></summary>
         <div class="faq-a"><p>Yes. Book a demo and we can set up a trial on your own schedule so your team sees real flights.</p></div>
@@ -369,7 +520,7 @@
     <div class="contact-copy reveal">
       <p class="eyebrow">Book a demo</p>
       <h2 class="h2" id="contact-title">See your own operation on it.</h2>
-      <p class="lead">Send us a few lines. We reply within one working day with a demo slot.</p>
+      <p class="lead">Send us a few lines. We reply within one working day with a demo slot or a quote.</p>
       <p class="contact-direct">Prefer email? <a href="mailto:augustin@de-franssu.com">augustin@de-franssu.com</a></p>
     </div>
     <div class="form-card reveal">
@@ -425,6 +576,7 @@
     <ul class="footer-links">
       <li><a href="mailto:augustin@de-franssu.com"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg><span>augustin@de-franssu.com</span></a></li>
       <li><a href="https://www.linkedin.com/in/YOUR-PROFILE" rel="noopener" target="_blank"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="2"/><path d="M8 10.5V16M8 7.8v.01M11.5 16v-5.5M11.5 13c0-1.5 1-2.5 2.3-2.5S16 11.2 16 13v3"/></svg><span>LinkedIn</span></a></li>
+      <li><a href="privacy/">Security & privacy</a></li>
       <li><a href="legal/">Legal notice</a></li>
     </ul>
   </div>
