@@ -22,8 +22,7 @@ export default function layout(cfg, page) {
     description: site.description,
     url: site.url + '/',
     image: ogImage,
-    offers: { '@type': 'Offer', url: site.url + '/#pricing', availability: 'https://schema.org/InStock' },
-  };
+      };
   return `<!doctype html>
 <html lang="${site.language}" class="no-js">
 <head>
@@ -31,7 +30,7 @@ export default function layout(cfg, page) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(page.title)}</title>
 <meta name="description" content="${esc(page.description)}">
-<link rel="canonical" href="${esc(url)}">
+<link rel="canonical" href="${esc(url)}">${page.noindex ? '\n<meta name="robots" content="noindex">' : ''}
 <meta name="theme-color" content="#13161e">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="${root}favicon.svg" type="image/svg+xml">

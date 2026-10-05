@@ -2,13 +2,13 @@
 
 Marketing site and interactive demo for OpsRamp, the live operations board for airline catering.
 
-- One page with 13 sections, plus a shareable full-screen demo at `/demo/` and a legal page at `/legal/`.
+- One page with 15 sections, plus a shareable full-screen demo at `/demo/`, a security & privacy page at `/privacy/` and a legal page at `/legal/`.
 - Plain HTML, CSS and JavaScript. No framework, no `npm install` needed to build.
-- Lighthouse (local test): 98 to 100 on Performance, 100 on Accessibility, Best Practices and SEO.
+- Lighthouse (local test): 96 mobile and 100 desktop on Performance, 100 on Accessibility, Best Practices and SEO.
 
 ## 1. Edit the content
 
-Every text, price, link and the contact email live in **`config.js`**. You never need to touch the code to change wording.
+Every text, link and the contact email live in **`config.js`**. You never need to touch the code to change wording.
 
 ```bash
 node build.mjs                                 # regenerates the site in ./dist (Node 18+)
@@ -19,15 +19,28 @@ python3 -m http.server 4173 -d dist            # preview at http://localhost:417
 
 | What | Where in `config.js` | Status |
 |---|---|---|
-| Real prices | `pricing.plans[].price`, then set `pricing.showExampleTag: false` | Example values ($290 / $690) |
+| Pricing | `pricing` (custom pricing: criteria and "Request a quote", no prices) | Custom quote |
 | LinkedIn profile | `contact.linkedin` | Placeholder |
 | Final domain | `site.url` (used for social previews, canonical, sitemap) | GitHub Pages URL |
 | Form provider | `contact.formProvider` (`'mailto'`, `'formspree'` or `'netlify'`) | `mailto` |
-| Testimonials | `proof.testimonials` (block appears automatically when not empty) | Empty, by design |
-| Proof figures | `proofStrip` and `proof.stats` | ~50 users, multi-site, 4 milestones |
+| Proof figures | `proofStrip` | ~50 users, multi-site, 4 milestones |
+| Privacy page details | `build.mjs` (`/privacy` page, lines marked "To complete") | Hosting, retention, subprocessors to fill in. The page is `noindex` until then |
 | Product name | `site.name` | Check trademark and domain availability for "OpsRamp" before launch |
 
 After changing `site.url` or any visible text used in the images, regenerate the social visuals (section 4).
+
+## 2b. Before going live: claims to verify
+
+The site states these as design principles. Check each one is technically true before production:
+
+- [ ] Isolated workspace per customer, with a dedicated database, never visible to another customer
+- [ ] Data never resold and never used to train AI models (check the terms of every service in the chain)
+- [ ] Encryption in transit (HTTPS everywhere) and at rest (database and backups)
+- [ ] Per-user access with roles: admin, supervisor, read only for TV screens
+- [ ] Export and deletion of customer data on request
+- [ ] Live ETA / ETD: the flight tracking source allows commercial use, and its attribution terms are met
+- [ ] AI via MCP: the connection works with the assistants your customers use, and setup is really included
+- [ ] No certification is claimed (no ISO 27001, SOC 2 or "GDPR certified") until you have it
 
 ## 3. Deploy
 
@@ -82,10 +95,12 @@ src/sections/*.mjs   one template per landing section
 src/css/             tokens, base, sections, dashboard
 src/js/main.js       landing behaviour (nav, reveal, lazy demo, copy link)
 src/js/hero.js       animated hero timeline
-src/js/copilot.js    scripted Copilot chat (answers computed from the demo data)
+src/js/copilot.js    scripted example chat for the AI via MCP section (answers computed from the demo data)
+src/js/live-slots.js Live slots visual (simulated inbound flight, delay propagation)
+src/js/config-panel.js config panel mockup (4 tabs, live board preview)
 src/js/roi.js        ROI calculator
 src/js/form.js       demo request form (validation, Netlify / Formspree, mailto fallback)
-src/js/dashboard/    interactive demo: data, views, overlays (sheet, search, alert), app
+src/js/dashboard/    interactive demo: data, views, overlays (flight sheet, search, alert), app
 src/fonts/           self-hosted Barlow Condensed + Share Tech Mono
 src/static/          copied as-is (favicon, social image)
 share/               LinkedIn visuals

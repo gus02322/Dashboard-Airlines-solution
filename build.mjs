@@ -66,7 +66,7 @@ async function page(path, html) {
 
 // Landing page: sections render in this order. A section module that
 // does not exist yet is simply skipped.
-const order = ['hero', 'proofStrip', 'problem', 'demo', 'features', 'copilot', 'howItWorks', 'roi', 'comparison', 'proof', 'pricing', 'faq', 'contact'];
+const order = ['hero', 'proofStrip', 'problem', 'demo', 'liveSlots', 'configPanel', 'copilot', 'privacy', 'features', 'howItWorks', 'roi', 'comparison', 'pricing', 'faq', 'contact'];
 const mainHtml = order.filter((k) => S[k]).map((k) => S[k](cfg)).join('\n');
 await page('', layout(cfg, {
   path: '',
@@ -118,6 +118,39 @@ await page('legal', layout(cfg, {
   <p>This website does not use tracking cookies. The interactive demo runs entirely in your browser and stores nothing.</p>
   <h2 class="h3">Trademarks</h2>
   <p>${cfg.footer.legal}</p>
+</div></main>
+${S.footer(cfg, { root: '../' })}`,
+}));
+
+// /privacy: security & privacy details. Placeholder until each point is
+// confirmed; kept out of search engines (noindex) until then.
+const todo = (t) => `<span class="todo">To complete: ${t}</span>`;
+await page('privacy', layout(cfg, {
+  path: 'privacy/',
+  root: '../',
+  noindex: true,
+  title: `Security & privacy | ${cfg.site.name}`,
+  description: `How ${cfg.site.name} isolates, protects and handles your operational data.`,
+  body: `${S.nav(cfg, { root: '../', home: false })}
+<main id="main" class="section legal"><div class="container legal-inner">
+  <p class="eyebrow">${cfg.privacy.eyebrow}</p>
+  <h1 class="h2">Security & privacy</h1>
+  <p class="lead">${cfg.privacy.text}</p>
+  ${cfg.privacy.items.map((it) => `<h2 class="h3">${it.title}</h2><p>${it.text}</p>`).join('\n  ')}
+  <h2 class="h3">What data OpsRamp handles</h2>
+  <p>Operational schedule data: flights, airlines, times, meal types and the timing rules you set. No passenger data is needed.</p>
+  <h2 class="h3">Live flight tracking</h2>
+  <p>Live estimated ETA and ETD come from live aircraft tracking (ADS-B). They are estimates based on the real position of the aircraft, not official airline schedules.</p>
+  <h2 class="h3">AI assistants (MCP)</h2>
+  <p>When you connect your own AI assistant through MCP, it reads your board data with the access you grant. Your AI provider's own terms apply to that assistant. OpsRamp does not use your data to train AI models.</p>
+  <h2 class="h3">Hosting and storage</h2>
+  ${todo('hosting provider, data region, backup policy.')}
+  <h2 class="h3">Retention</h2>
+  ${todo('how long data is kept after a contract ends.')}
+  <h2 class="h3">Subprocessors</h2>
+  ${todo('list of third-party services that process customer data.')}
+  <h2 class="h3">Contact</h2>
+  <p>Questions, export or deletion requests: <a href="mailto:${cfg.contact.email}">${cfg.contact.email}</a>.</p>
 </div></main>
 ${S.footer(cfg, { root: '../' })}`,
 }));

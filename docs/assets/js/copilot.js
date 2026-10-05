@@ -65,7 +65,7 @@ export function initCopilot(root) {
 
     const bot = document.createElement('div');
     bot.className = 'msg msg--bot';
-    bot.innerHTML = '<p class="typing" aria-label="Copilot is typing"><span></span><span></span><span></span></p>';
+    bot.innerHTML = '<p class="typing" aria-label="Assistant is typing"><span></span><span></span><span></span></p>';
     log.appendChild(bot);
     log.setAttribute('aria-busy', 'true');
     scroll();

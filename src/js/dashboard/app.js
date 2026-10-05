@@ -55,7 +55,7 @@ export function createDashboard(host, opts = {}) {
           <div class="db-logo"><span class="db-logo-mark" aria-hidden="true"></span>OPSRAMP</div>
           <div class="db-date mono">${DAY[date.getDay()]} ${date.getDate()} ${MON[date.getMonth()]}</div>
           <div class="db-clock mono" aria-label="Simulated time">00:00:00</div>
-          <div class="db-sync" title="Google Sheet sync"><span class="db-sync-dot"></span><span class="db-sync-lbl mono">Sheet synced</span></div>
+          <div class="db-sync" title="ETA and ETD follow live flight tracking"><span class="db-sync-dot"></span><span class="db-sync-lbl mono">Live tracking</span></div>
           <div class="db-status">
             <div class="spill"><span class="spill-lbl">Current</span><span class="spill-val mono cur">-</span></div>
             <div class="spill"><span class="spill-lbl">Next</span><span class="spill-val mono nxt">-</span></div>
@@ -155,7 +155,7 @@ export function createDashboard(host, opts = {}) {
     for (const e of evs) { if (e.mins <= t) cur = e; else if (!nxt) nxt = e; }
     els.cur.textContent = cur ? `${cur.time} ${EVENT_TYPES[cur.type].label} ${cur.f.flight}` : '-';
     els.nxt.textContent = nxt ? `${nxt.time} ${EVENT_TYPES[nxt.type].label} ${nxt.f.flight}` : 'None';
-    els.sync.textContent = 'Synced ' + m2t(Math.floor(m / 5) * 5);
+    els.sync.textContent = 'Live tracking ' + m2t(m);
 
     // Side panel
     const done = evs.filter((e) => e.mins <= t).length;
