@@ -8,15 +8,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OpsRamp posters</title>
+<title>Posters</title>
 <link rel="stylesheet" href="../dist/assets/site.css">
 <style>
   html, body { margin: 0; overflow: hidden; }
   .poster { position: relative; overflow: hidden; background: var(--bg); }
   .poster .hero-grid-bg { opacity: 0.9; }
   .poster-glow { position: absolute; width: 1100px; height: 1100px; right: -380px; top: -460px; background: radial-gradient(circle, rgba(0, 212, 255, 0.16), transparent 62%); pointer-events: none; }
-  .brand { display: inline-flex; align-items: center; gap: 14px; font-weight: 700; letter-spacing: 0.22em; color: var(--text-strong); }
-  .brand .logo-mark { width: 16px; height: 16px; border-width: 3px; }
+  .brand { display: inline-flex; color: var(--text-strong); font-size: 30px; }
   .tagline { color: var(--text-dim); letter-spacing: 0.06em; }
   .poster .h1 { line-height: 0.98; }
   .poster .hv-card { height: 100%; }
@@ -43,7 +42,7 @@
   .p-timeline .top .h2 { font-size: 56px; max-width: none; margin-top: 18px; }
   .p-timeline .db-host { --db-h: 760px; }
   .p-timeline .db-controls { display: none; }
-  .db-tv-exit { display: none !important; }
+  .db-tv-exit, .db.is-tv .db-tv-exit { display: none !important; }
 </style>
 </head>
 <body>
@@ -51,13 +50,15 @@
 <script type="module">
 import { initHero } from '../dist/assets/js/hero.js';
 import { createDashboard } from '../dist/assets/js/dashboard/app.js';
+import { wordmark } from '../dist/assets/js/icons.js';
+import { PRODUCT_NAME, TAGLINE } from '../config.js';
 
 const p = new URLSearchParams(location.search).get('p') || 'og';
 const root = document.getElementById('root');
-const brand = '<span class="brand"><span class="logo-mark"></span>OPSRAMP</span>';
+const brand = `<span class="brand">${wordmark(PRODUCT_NAME)}</span>`;
 const title = '<span class="hero-line">Every flight.</span><span class="hero-line">Every milestone.</span><span class="hero-line is-accent">One screen.</span>';
 const card = `<div class="hero-visual vis"><div class="hv-card">
-  <div class="hv-top"><span class="hv-logo"><span class="logo-mark"></span>OPSRAMP</span><span class="hv-clock mono">10:40</span><span class="hv-live mono"><span class="live-dot"></span>LIVE</span></div>
+  <div class="hv-top"><span class="hv-logo">${wordmark(PRODUCT_NAME)}</span><span class="hv-clock mono">10:40</span><span class="hv-live mono"><span class="live-dot"></span>LIVE</span></div>
   <div class="hv-legend mono"><span class="c-eta">ETA</span><span class="c-seal">Sealing</span><span class="c-truck">Truck</span><span class="c-etd">ETD</span></div>
   <div class="hv-view"><div class="hv-track"></div><div class="hv-now"><span class="hv-now-lbl mono">NOW 10:40</span></div></div>
 </div></div>`;
@@ -65,13 +66,13 @@ const card = `<div class="hero-visual vis"><div class="hv-card">
 if (p === 'og') {
   root.innerHTML = `<div class="poster p-og"><div class="hero-grid-bg"></div><div class="poster-glow"></div>
     <div style="position:relative">${brand}<h1 class="h1 hero-title">${title}</h1>
-    <p class="tagline">Live operations board for airline catering. Live ETA and ETD, slots that adjust on their own.</p></div>${card}</div>`;
+    <p class="tagline">${TAGLINE} Live ETA and ETD, slots that adjust on their own.</p></div>${card}</div>`;
 } else if (p === 'hero') {
   root.innerHTML = `<div class="poster p-hero"><div class="hero-grid-bg"></div><div class="poster-glow"></div>
     <div style="position:relative">${brand}<h1 class="h1 hero-title">${title}</h1>
     <p class="tagline">ETA, sealing, truck departure and ETD on one live board. Slots follow live flight tracking.</p></div>
     ${card}
-    <div class="foot" style="position:relative"><div class="chip-row"><span class="c-eta">ETA</span><span class="c-seal">Sealing</span><span class="c-truck">Truck</span><span class="c-etd">ETD</span></div><span class="tagline">Live in under 1 day</span></div></div>`;
+    <div class="foot" style="position:relative"><div class="chip-row"><span class="c-eta">ETA</span><span class="c-seal">Sealing</span><span class="c-truck">Truck</span><span class="c-etd">ETD</span></div><span class="tagline">${TAGLINE}</span></div></div>`;
 } else if (p === 'timeline') {
   root.innerHTML = `<div class="poster p-timeline"><div class="poster-glow"></div>
     <div class="top" style="position:relative"><div>${brand}<h2 class="h2">The whole day on one live board</h2></div>
@@ -86,7 +87,7 @@ const hv = document.querySelector('.hero-visual');
 if (hv) initHero(hv);
 const host = document.getElementById('db');
 if (host) {
-  const d = createDashboard(host, { start: p === 'tv' ? '11:52' : '10:40' });
+  const d = createDashboard(host, { start: p === 'tv' ? '11:52' : '10:40', name: PRODUCT_NAME });
   if (p === 'tv') await d.setTV(true);
 }
 setTimeout(() => { document.body.dataset.ready = '1'; }, 900);

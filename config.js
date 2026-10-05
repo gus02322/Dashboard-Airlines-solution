@@ -1,8 +1,9 @@
 /**
- * OpsRamp website configuration
+ * Website configuration
  * ------------------------------------------------------------
  * This is the ONLY file you need to edit to change text, links
- * and contact details. After editing, run:
+ * and contact details. The four constants below are read by the
+ * whole site: change the name, baseline, email or domain here. After editing, run:
  *
  *     node build.mjs
  *
@@ -13,15 +14,29 @@
  * no invented statistics, no customer names, no data provider names.
  */
 
+/* ---------- The four values the whole site reads ---------- */
+// Product name, as shown in the wordmark, titles and copy.
+export const PRODUCT_NAME = 'ANGA';
+// Baseline: page titles, footer, social images.
+export const TAGLINE = 'Live catering operations, on one screen.';
+// Single contact address: form fallback, footer, legal and privacy pages.
+export const CONTACT_EMAIL = 'augustin@de-franssu.com';
+// Public address of the site, no trailing slash. Used for canonical links,
+// social previews (LinkedIn needs absolute URLs) and the sitemap.
+// Currently GitHub Pages; replace with your own domain when you have it.
+export const SITE_URL = 'https://gus02322.github.io/Dashboard-Airlines-solution';
+
+const N = PRODUCT_NAME;
+
 export default {
   /* ---------- Site & SEO ---------- */
   site: {
-    name: 'OpsRamp',
-    // Final public URL, no trailing slash. Used for canonical links,
-    // social previews (LinkedIn needs absolute URLs) and the sitemap.
-    // Currently: GitHub Pages. Replace with your own domain later.
-    url: 'https://gus02322.github.io/Dashboard-Airlines-solution',
-    title: 'OpsRamp | Live operations board for airline catering',
+    name: PRODUCT_NAME,
+    tagline: TAGLINE,
+    url: SITE_URL,
+    title: `${PRODUCT_NAME} | ${TAGLINE.replace(/\.$/, '')}`,
+    // One discreet line about the name, shown in the footer
+    nameOrigin: 'Anga means sky in Swahili.',
     description:
       'A real-time board for airline catering: live estimated ETA and ETD from flight tracking, sealing and truck slots that adjust on their own, in your own private workspace.',
     language: 'en',
@@ -30,7 +45,7 @@ export default {
 
   /* ---------- Contact & form ---------- */
   contact: {
-    email: 'augustin@de-franssu.com',
+    email: CONTACT_EMAIL,
     linkedin: 'https://www.linkedin.com/in/YOUR-PROFILE', // TODO: replace
     // Form provider:
     //  'mailto'    opens the visitor's email app, pre-filled (works anywhere, no account)
@@ -105,7 +120,7 @@ export default {
   liveSlots: {
     eyebrow: 'Live slots',
     title: 'Slots that move with the aircraft.',
-    text: 'OpsRamp follows each inbound aircraft with live flight tracking. When the live estimated ETA moves, the estimated departure, the Box Time slot and the truck departure move with it. Nobody has to call the kitchen.',
+    text: `${N} follows each inbound aircraft with live flight tracking. When the live estimated ETA moves, the estimated departure, the Box Time slot and the truck departure move with it. Nobody has to call the kitchen.`,
     points: [
       'Live estimated ETA and ETD, refreshed from live aircraft tracking (ADS-B)',
       'Box Time and truck slots recalculated from your own timing rules',
@@ -128,13 +143,13 @@ export default {
   copilot: {
     eyebrow: 'AI Copilot · MCP',
     title: 'Connect your own AI via MCP.',
-    text: 'OpsRamp plugs into the AI assistant your team already uses, through the open MCP protocol. Ask it about today\'s flights in plain English. It answers from your live board.',
+    text: `${N} plugs into the AI assistant your team already uses, through the open MCP protocol. Ask it about today's flights in plain English. It answers from your live board.`,
     points: [
-      'Works with your own AI subscription. OpsRamp bills no AI costs.',
+      `Works with your own AI subscription. ${N} bills no AI costs.`,
       'We set up the connection for you. Setup is included.',
       'The Copilot works through MCP only. Nothing extra to install on the board.',
     ],
-    flow: ['OpsRamp data', 'MCP connection', 'Your AI assistant'],
+    flow: [`${N} data`, 'MCP connection', 'Your AI assistant'],
     example: 'Example of what your own AI assistant can answer once connected',
     disclaimer: 'Scripted demo. Answers are computed from the sample schedule above.',
     // Answers are computed live from the demo data; the questions are editable.
@@ -149,7 +164,7 @@ export default {
   privacy: {
     eyebrow: 'Data & privacy',
     title: 'Your data stays yours.',
-    text: 'OpsRamp is designed around five principles. They shape how the product is built, not just how it is sold.',
+    text: `${N} is designed around five principles. They shape how the product is built, not just how it is sold.`,
     // Design principles. Check each one technically before going live (see README checklist).
     items: [
       { icon: 'box', title: 'An isolated workspace', text: 'Each customer has its own workspace and its own database. Your data is never visible to another customer.' },
@@ -199,14 +214,14 @@ export default {
     },
     currency: '$',
     disclaimer:
-      'Estimate only. The avoidable share is an assumption you control. OpsRamp does not guarantee a specific reduction.',
+      `Estimate only. The avoidable share is an assumption you control. ${N} does not guarantee a specific reduction.`,
   },
 
   /* ---------- Comparison ---------- */
   comparison: {
     eyebrow: 'Comparison',
-    title: 'Where OpsRamp fits',
-    columns: ['Spreadsheets + WhatsApp', 'OpsRamp', 'Enterprise suites'],
+    title: `Where ${N} fits`,
+    columns: ['Spreadsheets + WhatsApp', `${N}`, 'Enterprise suites'],
     rows: [
       { label: 'Pricing model', values: ['Free', 'Tailored to your operation', 'Large licence, often per site'] },
       { label: 'Live ETA and ETD', values: ['Updated by hand, by phone or chat', 'Live estimates from flight tracking', 'Varies by vendor'] },
@@ -238,9 +253,9 @@ export default {
     title: 'Questions operators ask',
     items: [
       { q: 'Is our schedule data secure?', a: 'Each customer has an isolated workspace with its own database. Data is encrypted in transit and at rest, access is per user with roles, and no passenger data is needed. The details are on the Security & privacy page.' },
-      { q: 'Where do the live ETA and ETD come from?', a: 'From live aircraft tracking (ADS-B). OpsRamp estimates arrival and departure times from the real position of the aircraft. These are live estimates, not official airline schedules, and they can move as the flight progresses.' },
-      { q: 'Who pays for the AI?', a: 'You do, through your own AI subscription. OpsRamp only bills access and setup, never AI usage.' },
-      { q: 'Do we need an IT project or special training?', a: 'No. OpsRamp runs in a web browser on PCs, phones and TVs. We create your workspace with you, and your flights and timings go in the config panel. A short walkthrough is enough for the team.' },
+      { q: 'Where do the live ETA and ETD come from?', a: `From live aircraft tracking (ADS-B). ${N} estimates arrival and departure times from the real position of the aircraft. These are live estimates, not official airline schedules, and they can move as the flight progresses.` },
+      { q: 'Who pays for the AI?', a: `You do, through your own AI subscription. ${N} only bills access and setup, never AI usage.` },
+      { q: 'Do we need an IT project or special training?', a: `No. ${N} runs in a web browser on PCs, phones and TVs. We create your workspace with you, and your flights and timings go in the config panel. A short walkthrough is enough for the team.` },
       { q: 'Can we adapt it to our operation?', a: 'Yes. Airlines, colours, meal types, alert timing and the rules behind sealing and truck slots, per aircraft size, are all set in your workspace.' },
       { q: 'What support do we get?', a: 'Setup is done with you, not handed over as a manual. Email support is included.' },
       { q: 'Can we try it first?', a: 'Yes. Book a demo and we can set up a trial on your own schedule so your team sees real flights.' },
@@ -260,13 +275,13 @@ export default {
 
   /* ---------- Footer ---------- */
   footer: {
-    tagline: 'Live operations board for airline catering.',
-    legal: 'OpsRamp is an independent product. Airline names in the demo are used for illustration only; no affiliation is implied.',
+    tagline: TAGLINE,
+    legal: `${N} is an independent product. Airline names in the demo are used for illustration only; no affiliation is implied.`,
   },
 
   /* ---------- /demo share page ---------- */
   demoPage: {
-    title: 'OpsRamp live demo | Airline catering operations board',
-    description: 'Try the OpsRamp board: live timeline, live estimated ETA and ETD, alerts, airline and production views, TV mode. Sample data.',
+    title: `${N} live demo | Airline catering operations board`,
+    description: `Try the ${N} board: live timeline, live estimated ETA and ETD, alerts, airline and production views, TV mode. Sample data.`,
   },
 };

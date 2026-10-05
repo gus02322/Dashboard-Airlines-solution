@@ -1,6 +1,6 @@
 import { esc, icon } from './_helpers.mjs';
 
-/** AI via MCP: the customer's own assistant, connected to OpsRamp. Scripted example chat. */
+/** AI via MCP: the customer's own assistant, connected to the board. Scripted example chat. */
 export default function copilot(cfg) {
   const c = cfg.copilot;
   const flowIcons = ['timeline', 'link', 'chat'];
@@ -24,11 +24,11 @@ export default function copilot(cfg) {
         <div class="chat-top">
           <span class="chat-ic">${icon('chat')}</span>
           <span class="chat-name">Your AI assistant</span>
-          <span class="chat-mcp mono"><span class="live-dot" aria-hidden="true"></span>OpsRamp via MCP</span>
+          <span class="chat-mcp mono"><span class="live-dot" aria-hidden="true"></span>${esc(cfg.site.name)} via MCP</span>
           <span class="chat-time mono">Board 10:40</span>
         </div>
         <div class="chat-log" role="log" aria-live="polite" aria-label="Example conversation">
-          <div class="msg msg--bot"><p>Connected to OpsRamp. I can see today's ${'<span data-count></span>'} flights. Ask me anything about the schedule.</p></div>
+          <div class="msg msg--bot"><p>Connected to ${esc(cfg.site.name)}. I can see today's ${'<span data-count></span>'} flights. Ask me anything about the schedule.</p></div>
         </div>
         <div class="chat-suggest" role="group" aria-label="Suggested questions">
           ${c.questions.map((q, i) => `<button type="button" class="chip-q" data-q="${i}">${esc(q)}</button>`).join('')}

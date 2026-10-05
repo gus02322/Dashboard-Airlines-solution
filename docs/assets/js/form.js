@@ -42,7 +42,7 @@ export function initForm(form, cfg) {
 
   function mailto(data) {
     const body = ['name', 'email', 'company', 'size', 'plan', 'message'].filter((k) => data.get(k)).map((k) => `${k[0].toUpperCase() + k.slice(1)}: ${data.get(k)}`).join('\n');
-    return `mailto:${cfg.email}?subject=${encodeURIComponent('OpsRamp demo request: ' + (data.get('company') || ''))}&body=${encodeURIComponent(body)}`;
+    return `mailto:${cfg.email}?subject=${encodeURIComponent((cfg.name || '') + ' demo request: ' + (data.get('company') || ''))}&body=${encodeURIComponent(body)}`;
   }
 
   form.addEventListener('submit', async (e) => {

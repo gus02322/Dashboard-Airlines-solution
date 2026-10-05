@@ -1,4 +1,4 @@
-import { esc, icon } from './_helpers.mjs';
+import { esc, icon, wordmark } from './_helpers.mjs';
 
 /** 13. Footer: contact, LinkedIn, legal. */
 export default function footer(cfg, { root = '' } = {}) {
@@ -7,8 +7,9 @@ export default function footer(cfg, { root = '' } = {}) {
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-brand">
-      <a class="nav-logo" href="${root || './'}"><span class="logo-mark" aria-hidden="true"></span><span>${esc(cfg.site.name.toUpperCase())}</span></a>
+      <a class="nav-logo" href="${root || './'}" aria-label="${esc(cfg.site.name)} home">${wordmark(cfg.site.name)}</a>
       <p>${esc(cfg.footer.tagline)}</p>
+      <p class="footer-origin">${esc(cfg.site.nameOrigin)}</p>
     </div>
     <ul class="footer-links">
       <li><a href="mailto:${esc(c.email)}">${icon('mail')}<span>${esc(c.email)}</span></a></li>

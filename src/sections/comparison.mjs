@@ -4,7 +4,7 @@ import head from './_head.mjs';
 /** 8. Comparison table. Factual, no brand named. */
 export default function comparison(cfg) {
   const c = cfg.comparison;
-  const hi = c.columns.indexOf('OpsRamp');
+  const hi = c.columns.indexOf(cfg.site.name);
   return `
 <section class="section compare" id="compare" aria-labelledby="compare-title">
   <div class="container">

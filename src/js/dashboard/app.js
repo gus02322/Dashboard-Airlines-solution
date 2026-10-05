@@ -1,16 +1,16 @@
 /* ============================================================
-   OpsRamp demo dashboard
+   Demo dashboard
    A faithful, self-contained replica of the production board,
    running on a simulated clock with sample data.
    No network, no storage, no API key.
 
-   Usage: createDashboard(hostElement, { start: '10:40' })
+   Usage: createDashboard(hostElement, { start: '10:40', name: 'Product' })
    ============================================================ */
 
 import { FLIGHTS, EVENTS, PROD_SLOTS, EVENT_TYPES, t2m, m2t } from './data.js';
 import { renderOps, renderProduction, renderAirlines, renderWeek } from './views.js';
 import { createSheet, createSearch, createAlertModal, rel } from './overlays.js';
-import { icon } from '../icons.js';
+import { icon, wordmark } from '../icons.js';
 
 const VIEWS = [
   { key: 'ops', label: 'Ops' },
@@ -32,6 +32,7 @@ const DAY = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export function createDashboard(host, opts = {}) {
+  const NAME = opts.name || '';
   const s = {
     now: t2m(opts.start || '10:40'),
     speed: 1,
@@ -50,9 +51,9 @@ export function createDashboard(host, opts = {}) {
   host.classList.add('db-host');
   host.innerHTML = `
     <div class="db-frame">
-      <div class="db" tabindex="-1" aria-label="OpsRamp live demo dashboard" role="region">
+      <div class="db" tabindex="-1" aria-label="${NAME} live demo dashboard" role="region">
         <div class="db-top">
-          <div class="db-logo"><span class="db-logo-mark" aria-hidden="true"></span>OPSRAMP</div>
+          <div class="db-logo">${wordmark(NAME)}</div>
           <div class="db-date mono">${DAY[date.getDay()]} ${date.getDate()} ${MON[date.getMonth()]}</div>
           <div class="db-clock mono" aria-label="Simulated time">00:00:00</div>
           <div class="db-sync" title="ETA and ETD follow live flight tracking"><span class="db-sync-dot"></span><span class="db-sync-lbl mono">Live tracking</span></div>

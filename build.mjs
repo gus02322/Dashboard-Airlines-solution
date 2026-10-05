@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ============================================================
-   OpsRamp static site build (zero dependencies)
+   Static site build (zero dependencies)
 
    node build.mjs           -> writes the site to ./dist
 
@@ -49,6 +49,7 @@ if (existsSync(join(ROOT, 'share'))) await cp(join(ROOT, 'share'), join(OUT, 'sh
 
 /* Browser-side config: only what scripts need (never secrets). */
 const clientCfg = `<script id="site-config" type="application/json">${JSON.stringify({
+  name: cfg.site.name,
   email: cfg.contact.email,
   formProvider: cfg.contact.formProvider,
   formspreeEndpoint: cfg.contact.formspreeEndpoint,
@@ -86,7 +87,7 @@ await page('demo', layout(cfg, {
   extraHead: clientCfg,
   body: `
 <header class="demo-bar">
-  <a class="nav-logo" href="../"><span class="logo-mark" aria-hidden="true"></span><span>${cfg.site.name.toUpperCase()}</span></a>
+  <a class="nav-logo" href="../" aria-label="${cfg.site.name} home">${(await import('./src/js/icons.js')).wordmark(cfg.site.name)}</a>
   <p class="demo-bar-note">Live demo · sample data</p>
   <div class="demo-bar-actions">
     <button type="button" class="link-btn" data-copy-link="" aria-label="Copy link to this demo">${(await import('./src/js/icons.js')).icon('link')}<span>Copy link</span></button>
@@ -137,12 +138,12 @@ await page('privacy', layout(cfg, {
   <h1 class="h2">Security & privacy</h1>
   <p class="lead">${cfg.privacy.text}</p>
   ${cfg.privacy.items.map((it) => `<h2 class="h3">${it.title}</h2><p>${it.text}</p>`).join('\n  ')}
-  <h2 class="h3">What data OpsRamp handles</h2>
+  <h2 class="h3">What data ${cfg.site.name} handles</h2>
   <p>Operational schedule data: flights, airlines, times, meal types and the timing rules you set. No passenger data is needed.</p>
   <h2 class="h3">Live flight tracking</h2>
   <p>Live estimated ETA and ETD come from live aircraft tracking (ADS-B). They are estimates based on the real position of the aircraft, not official airline schedules.</p>
   <h2 class="h3">AI assistants (MCP)</h2>
-  <p>When you connect your own AI assistant through MCP, it reads your board data with the access you grant. Your AI provider's own terms apply to that assistant. OpsRamp does not use your data to train AI models.</p>
+  <p>When you connect your own AI assistant through MCP, it reads your board data with the access you grant. Your AI provider's own terms apply to that assistant. ${cfg.site.name} does not use your data to train AI models.</p>
   <h2 class="h3">Hosting and storage</h2>
   ${todo('hosting provider, data region, backup policy.')}
   <h2 class="h3">Retention</h2>
@@ -191,7 +192,7 @@ await writeFile(join(ROOT, 'index.html'), `<!doctype html>
 <script>location.replace('docs/' + location.hash);</script>
 <style>body{background:#13161e;color:#d8dce8;font-family:sans-serif;display:grid;place-items:center;height:100vh;margin:0}a{color:#00d4ff}</style>
 </head>
-<body><p>Opening the site… <a href="docs/">continue</a></p></body>
+<body><p>Opening ${cfg.site.name}… <a href="docs/">continue</a></p></body>
 </html>
 `);
 
