@@ -1,4 +1,4 @@
-import { esc, icon } from './_helpers.mjs';
+import { esc, icon, wordmark } from './_helpers.mjs';
 
 /** 1. Hero: headline, one sentence, two CTAs, animated mini-timeline. */
 export default function hero(cfg) {
@@ -20,7 +20,7 @@ export default function hero(cfg) {
     <div class="hero-visual" aria-hidden="true">
       <div class="hv-card">
         <div class="hv-top">
-          <span class="hv-logo"><span class="logo-mark"></span>OPSRAMP</span>
+          <span class="hv-logo">${wordmark(cfg.site.name)}</span>
           <span class="hv-clock mono">10:40</span>
           <span class="hv-live mono"><span class="live-dot"></span>LIVE</span>
         </div>

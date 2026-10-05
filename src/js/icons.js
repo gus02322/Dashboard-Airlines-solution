@@ -48,6 +48,17 @@ const P = {
 };
 
 /**
+ * Product wordmark: the name in capitals with a small cyan dot, like a
+ * point of light in the sky. Used by the build and the browser modules.
+ * @param {string} name
+ * @param {string} [cls]
+ */
+export function wordmark(name, cls = '') {
+  const s = String(name).replace(/[&<>"]/g, '');
+  return `<span class="wm${cls ? ' ' + cls : ''}">${s.toUpperCase()}<span class="wm-dot" aria-hidden="true"></span></span>`;
+}
+
+/**
  * Return an inline SVG string. Decorative by default (aria-hidden).
  * @param {string} name
  * @param {string} [cls]

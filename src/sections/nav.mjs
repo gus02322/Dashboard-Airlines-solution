@@ -1,4 +1,4 @@
-import { esc } from './_helpers.mjs';
+import { esc, wordmark } from './_helpers.mjs';
 
 /** Sticky navigation. `root` is the relative path to the site root. */
 export default function nav(cfg, { root = '', home = true } = {}) {
@@ -7,7 +7,7 @@ export default function nav(cfg, { root = '', home = true } = {}) {
 <header class="nav">
   <div class="container nav-inner">
     <a class="nav-logo" href="${home ? '#top' : root || './'}" aria-label="${esc(cfg.site.name)} home">
-      <span class="logo-mark" aria-hidden="true"></span><span>${esc(cfg.site.name.toUpperCase())}</span>
+      ${wordmark(cfg.site.name)}
     </a>
     <nav class="nav-menu" id="nav-menu" aria-label="Main">
       <ul>

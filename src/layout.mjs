@@ -46,7 +46,7 @@ export default function layout(cfg, page) {
 <meta property="og:image" content="${esc(ogImage)}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="OpsRamp live operations board with the NOW line and colour-coded flight milestones">
+<meta property="og:image:alt" content="${esc(site.name)} live operations board with the NOW line and colour-coded flight milestones">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(page.title)}">
 <meta name="twitter:description" content="${esc(page.description)}">

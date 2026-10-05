@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OpsRamp | Live operations board for airline catering</title>
+<title>ANGA | Live catering operations, on one screen</title>
 <meta name="description" content="A real-time board for airline catering: live estimated ETA and ETD from flight tracking, sealing and truck slots that adjust on their own, in your own private workspace.">
 <link rel="canonical" href="https://gus02322.github.io/Dashboard-Airlines-solution/">
 <meta name="theme-color" content="#13161e">
@@ -14,20 +14,20 @@
 <link rel="preload" href="assets/fonts/share-tech-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="OpsRamp">
-<meta property="og:title" content="OpsRamp | Live operations board for airline catering">
+<meta property="og:site_name" content="ANGA">
+<meta property="og:title" content="ANGA | Live catering operations, on one screen">
 <meta property="og:description" content="A real-time board for airline catering: live estimated ETA and ETD from flight tracking, sealing and truck slots that adjust on their own, in your own private workspace.">
 <meta property="og:url" content="https://gus02322.github.io/Dashboard-Airlines-solution/">
 <meta property="og:image" content="https://gus02322.github.io/Dashboard-Airlines-solution/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="OpsRamp live operations board with the NOW line and colour-coded flight milestones">
+<meta property="og:image:alt" content="ANGA live operations board with the NOW line and colour-coded flight milestones">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="OpsRamp | Live operations board for airline catering">
+<meta name="twitter:title" content="ANGA | Live catering operations, on one screen">
 <meta name="twitter:description" content="A real-time board for airline catering: live estimated ETA and ETD from flight tracking, sealing and truck slots that adjust on their own, in your own private workspace.">
 <meta name="twitter:image" content="https://gus02322.github.io/Dashboard-Airlines-solution/assets/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"OpsRamp","applicationCategory":"BusinessApplication","applicationSubCategory":"Airline catering operations","operatingSystem":"Web browser","description":"A real-time board for airline catering: live estimated ETA and ETD from flight tracking, sealing and truck slots that adjust on their own, in your own private workspace.","url":"https://gus02322.github.io/Dashboard-Airlines-solution/","image":"https://gus02322.github.io/Dashboard-Airlines-solution/assets/og-image.png"}</script>
-<script id="site-config" type="application/json">{"email":"augustin@de-franssu.com","formProvider":"mailto","formspreeEndpoint":"https://formspree.io/f/YOUR_FORM_ID","cta":{"success":"Thank you. Your request is in. We will reply within one working day.","error":"Sending failed. Your email app will open with the message ready to send."},"roi":{"eyebrow":"Your numbers","title":"What is one late truck worth to you?","text":"Use your own numbers. This is an estimate, not a promise.","defaults":{"flightsPerDay":30,"incidentsPerMonth":6,"costPerIncident":800,"avoidablePct":25},"currency":"$","disclaimer":"Estimate only. The avoidable share is an assumption you control. OpsRamp does not guarantee a specific reduction."},"copilot":{"questions":["What leaves in the next 2 hours?","Which flights are at risk?","How many Halal meals today?"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ANGA","applicationCategory":"BusinessApplication","applicationSubCategory":"Airline catering operations","operatingSystem":"Web browser","description":"A real-time board for airline catering: live estimated ETA and ETD from flight tracking, sealing and truck slots that adjust on their own, in your own private workspace.","url":"https://gus02322.github.io/Dashboard-Airlines-solution/","image":"https://gus02322.github.io/Dashboard-Airlines-solution/assets/og-image.png"}</script>
+<script id="site-config" type="application/json">{"name":"ANGA","email":"augustin@de-franssu.com","formProvider":"mailto","formspreeEndpoint":"https://formspree.io/f/YOUR_FORM_ID","cta":{"success":"Thank you. Your request is in. We will reply within one working day.","error":"Sending failed. Your email app will open with the message ready to send."},"roi":{"eyebrow":"Your numbers","title":"What is one late truck worth to you?","text":"Use your own numbers. This is an estimate, not a promise.","defaults":{"flightsPerDay":30,"incidentsPerMonth":6,"costPerIncident":800,"avoidablePct":25},"currency":"$","disclaimer":"Estimate only. The avoidable share is an assumption you control. ANGA does not guarantee a specific reduction."},"copilot":{"questions":["What leaves in the next 2 hours?","Which flights are at risk?","How many Halal meals today?"]}}</script>
 <script type="module" src="assets/js/main.js"></script>
 </head>
 <body class="">
@@ -35,8 +35,8 @@
 
 <header class="nav">
   <div class="container nav-inner">
-    <a class="nav-logo" href="#top" aria-label="OpsRamp home">
-      <span class="logo-mark" aria-hidden="true"></span><span>OPSRAMP</span>
+    <a class="nav-logo" href="#top" aria-label="ANGA home">
+      <span class="wm">ANGA<span class="wm-dot" aria-hidden="true"></span></span>
     </a>
     <nav class="nav-menu" id="nav-menu" aria-label="Main">
       <ul>
@@ -66,7 +66,7 @@
     <div class="hero-visual" aria-hidden="true">
       <div class="hv-card">
         <div class="hv-top">
-          <span class="hv-logo"><span class="logo-mark"></span>OPSRAMP</span>
+          <span class="hv-logo"><span class="wm">ANGA<span class="wm-dot" aria-hidden="true"></span></span></span>
           <span class="hv-clock mono">10:40</span>
           <span class="hv-live mono"><span class="live-dot"></span>LIVE</span>
         </div>
@@ -137,7 +137,7 @@
     <div class="lslots-copy reveal">
       <p class="eyebrow">Live slots</p>
       <h2 class="h2" id="ls-title">Slots that move with the aircraft.</h2>
-      <p class="lead">OpsRamp follows each inbound aircraft with live flight tracking. When the live estimated ETA moves, the estimated departure, the Box Time slot and the truck departure move with it. Nobody has to call the kitchen.</p>
+      <p class="lead">ANGA follows each inbound aircraft with live flight tracking. When the live estimated ETA moves, the estimated departure, the Box Time slot and the truck departure move with it. Nobody has to call the kitchen.</p>
       <ul class="ticks">
         <li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Live estimated ETA and ETD, refreshed from live aircraft tracking (ADS-B)</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Box Time and truck slots recalculated from your own timing rules</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>The change shows on every screen at once, with an alert if a slot gets tight</span></li>
       </ul>
@@ -225,7 +225,7 @@
     <div class="cp reveal" data-config-panel>
       <div class="cp-panel">
         <div class="cp-top">
-          <span class="cp-ws mono"><span class="logo-mark" aria-hidden="true"></span>Workspace · Sample hub</span>
+          <span class="cp-ws mono"><span class="wm">ANGA<span class="wm-dot" aria-hidden="true"></span></span><span>Workspace · Sample hub</span></span>
           <span class="cp-saved mono" data-saved aria-live="polite">All changes saved</span>
         </div>
         <div class="cp-tabs" role="tablist" aria-label="Settings">
@@ -254,12 +254,12 @@
     <div class="copilot-copy reveal">
       <p class="eyebrow">AI Copilot · MCP</p>
       <h2 class="h2" id="copilot-title">Connect your own AI via MCP.</h2>
-      <p class="lead">OpsRamp plugs into the AI assistant your team already uses, through the open MCP protocol. Ask it about today&#39;s flights in plain English. It answers from your live board.</p>
+      <p class="lead">ANGA plugs into the AI assistant your team already uses, through the open MCP protocol. Ask it about today&#39;s flights in plain English. It answers from your live board.</p>
       <ol class="mcp-flow" aria-label="How the connection works">
-        <li class="mcp-step"><span class="mcp-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4v16M4 8h9M4 13h14M4 18h6"/><circle cx="4" cy="11" r="0.5"/></svg></span><span>OpsRamp data</span></li><li class="mcp-step is-mid"><span class="mcp-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><span>MCP connection</span></li><li class="mcp-step"><span class="mcp-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5.5h16v10H10l-4.5 4v-4H4z"/><path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01"/></svg></span><span>Your AI assistant</span></li>
+        <li class="mcp-step"><span class="mcp-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4v16M4 8h9M4 13h14M4 18h6"/><circle cx="4" cy="11" r="0.5"/></svg></span><span>ANGA data</span></li><li class="mcp-step is-mid"><span class="mcp-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><span>MCP connection</span></li><li class="mcp-step"><span class="mcp-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5.5h16v10H10l-4.5 4v-4H4z"/><path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01"/></svg></span><span>Your AI assistant</span></li>
       </ol>
       <ul class="ticks">
-        <li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Works with your own AI subscription. OpsRamp bills no AI costs.</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>We set up the connection for you. Setup is included.</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>The Copilot works through MCP only. Nothing extra to install on the board.</span></li>
+        <li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Works with your own AI subscription. ANGA bills no AI costs.</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>We set up the connection for you. Setup is included.</span></li><li><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>The Copilot works through MCP only. Nothing extra to install on the board.</span></li>
       </ul>
     </div>
     <div class="chat-wrap reveal">
@@ -268,11 +268,11 @@
         <div class="chat-top">
           <span class="chat-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5.5h16v10H10l-4.5 4v-4H4z"/><path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01"/></svg></span>
           <span class="chat-name">Your AI assistant</span>
-          <span class="chat-mcp mono"><span class="live-dot" aria-hidden="true"></span>OpsRamp via MCP</span>
+          <span class="chat-mcp mono"><span class="live-dot" aria-hidden="true"></span>ANGA via MCP</span>
           <span class="chat-time mono">Board 10:40</span>
         </div>
         <div class="chat-log" role="log" aria-live="polite" aria-label="Example conversation">
-          <div class="msg msg--bot"><p>Connected to OpsRamp. I can see today's <span data-count></span> flights. Ask me anything about the schedule.</p></div>
+          <div class="msg msg--bot"><p>Connected to ANGA. I can see today's <span data-count></span> flights. Ask me anything about the schedule.</p></div>
         </div>
         <div class="chat-suggest" role="group" aria-label="Suggested questions">
           <button type="button" class="chip-q" data-q="0">What leaves in the next 2 hours?</button><button type="button" class="chip-q" data-q="1">Which flights are at risk?</button><button type="button" class="chip-q" data-q="2">How many Halal meals today?</button>
@@ -288,7 +288,7 @@
     <div class="section-head reveal">
       <p class="eyebrow">Data &amp; privacy</p>
       <h2 class="h2" id="privacy-title">Your data stays yours.</h2>
-      <p class="lead">OpsRamp is designed around five principles. They shape how the product is built, not just how it is sold.</p>
+      <p class="lead">ANGA is designed around five principles. They shape how the product is built, not just how it is sold.</p>
     </div>
     <ul class="principles">
       <li class="principle reveal" style="--d:0ms">
@@ -427,7 +427,7 @@
         <p class="roi-year mono"><span data-res="year"></span> / year</p>
         <p class="roi-formula mono" data-res="formula"></p>
         <p class="roi-rate" data-res="rate"></p>
-        <p class="roi-disclaimer">Estimate only. The avoidable share is an assumption you control. OpsRamp does not guarantee a specific reduction.</p>
+        <p class="roi-disclaimer">Estimate only. The avoidable share is an assumption you control. ANGA does not guarantee a specific reduction.</p>
       </div>
     </div>
   </div>
@@ -437,15 +437,15 @@
   <div class="container">
     <div class="section-head reveal">
       <p class="eyebrow">Comparison</p>
-      <h2 class="h2" id="compare-title">Where OpsRamp fits</h2>
+      <h2 class="h2" id="compare-title">Where ANGA fits</h2>
       
     </div>
     <div class="table-wrap reveal">
       <table class="cmp">
-        <caption class="sr-only">Where OpsRamp fits</caption>
-        <thead><tr><td></td><th scope="col">Spreadsheets + WhatsApp</th><th scope="col" class="is-hi">OpsRamp</th><th scope="col">Enterprise suites</th></tr></thead>
+        <caption class="sr-only">Where ANGA fits</caption>
+        <thead><tr><td></td><th scope="col">Spreadsheets + WhatsApp</th><th scope="col" class="is-hi">ANGA</th><th scope="col">Enterprise suites</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Pricing model</th><td data-label="Spreadsheets + WhatsApp">Free</td><td data-label="OpsRamp" class="is-hi">Tailored to your operation</td><td data-label="Enterprise suites">Large licence, often per site</td></tr><tr><th scope="row">Live ETA and ETD</th><td data-label="Spreadsheets + WhatsApp">Updated by hand, by phone or chat</td><td data-label="OpsRamp" class="is-hi">Live estimates from flight tracking</td><td data-label="Enterprise suites">Varies by vendor</td></tr><tr><th scope="row">Time to go live</th><td data-label="Spreadsheets + WhatsApp">Already there</td><td data-label="OpsRamp" class="is-hi">Fast, no IT project</td><td data-label="Enterprise suites">Weeks to months</td></tr><tr><th scope="row">Training</th><td data-label="Spreadsheets + WhatsApp">None, but no live view</td><td data-label="OpsRamp" class="is-hi">A short walkthrough</td><td data-label="Enterprise suites">Formal training</td></tr><tr><th scope="row">Mobile and TV</th><td data-label="Spreadsheets + WhatsApp">Phone only, no alerts</td><td data-label="OpsRamp" class="is-hi">Both, with alerts</td><td data-label="Enterprise suites">Varies by module</td></tr><tr><th scope="row">AI assistant</th><td data-label="Spreadsheets + WhatsApp">None</td><td data-label="OpsRamp" class="is-hi">Your own AI, connected via MCP</td><td data-label="Enterprise suites">Varies by vendor</td></tr><tr><th scope="row">Fits a small team</th><td data-label="Spreadsheets + WhatsApp">Yes</td><td data-label="OpsRamp" class="is-hi">Yes</td><td data-label="Enterprise suites">Built for large operations</td></tr>
+          <tr><th scope="row">Pricing model</th><td data-label="Spreadsheets + WhatsApp">Free</td><td data-label="ANGA" class="is-hi">Tailored to your operation</td><td data-label="Enterprise suites">Large licence, often per site</td></tr><tr><th scope="row">Live ETA and ETD</th><td data-label="Spreadsheets + WhatsApp">Updated by hand, by phone or chat</td><td data-label="ANGA" class="is-hi">Live estimates from flight tracking</td><td data-label="Enterprise suites">Varies by vendor</td></tr><tr><th scope="row">Time to go live</th><td data-label="Spreadsheets + WhatsApp">Already there</td><td data-label="ANGA" class="is-hi">Fast, no IT project</td><td data-label="Enterprise suites">Weeks to months</td></tr><tr><th scope="row">Training</th><td data-label="Spreadsheets + WhatsApp">None, but no live view</td><td data-label="ANGA" class="is-hi">A short walkthrough</td><td data-label="Enterprise suites">Formal training</td></tr><tr><th scope="row">Mobile and TV</th><td data-label="Spreadsheets + WhatsApp">Phone only, no alerts</td><td data-label="ANGA" class="is-hi">Both, with alerts</td><td data-label="Enterprise suites">Varies by module</td></tr><tr><th scope="row">AI assistant</th><td data-label="Spreadsheets + WhatsApp">None</td><td data-label="ANGA" class="is-hi">Your own AI, connected via MCP</td><td data-label="Enterprise suites">Varies by vendor</td></tr><tr><th scope="row">Fits a small team</th><td data-label="Spreadsheets + WhatsApp">Yes</td><td data-label="ANGA" class="is-hi">Yes</td><td data-label="Enterprise suites">Built for large operations</td></tr>
         </tbody>
       </table>
     </div>
@@ -494,13 +494,13 @@
         <div class="faq-a"><p>Each customer has an isolated workspace with its own database. Data is encrypted in transit and at rest, access is per user with roles, and no passenger data is needed. The details are on the Security &amp; privacy page.</p></div>
       </details><details class="faq-item">
         <summary><span>Where do the live ETA and ETD come from?</span><span class="faq-plus" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>From live aircraft tracking (ADS-B). OpsRamp estimates arrival and departure times from the real position of the aircraft. These are live estimates, not official airline schedules, and they can move as the flight progresses.</p></div>
+        <div class="faq-a"><p>From live aircraft tracking (ADS-B). ANGA estimates arrival and departure times from the real position of the aircraft. These are live estimates, not official airline schedules, and they can move as the flight progresses.</p></div>
       </details><details class="faq-item">
         <summary><span>Who pays for the AI?</span><span class="faq-plus" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>You do, through your own AI subscription. OpsRamp only bills access and setup, never AI usage.</p></div>
+        <div class="faq-a"><p>You do, through your own AI subscription. ANGA only bills access and setup, never AI usage.</p></div>
       </details><details class="faq-item">
         <summary><span>Do we need an IT project or special training?</span><span class="faq-plus" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>No. OpsRamp runs in a web browser on PCs, phones and TVs. We create your workspace with you, and your flights and timings go in the config panel. A short walkthrough is enough for the team.</p></div>
+        <div class="faq-a"><p>No. ANGA runs in a web browser on PCs, phones and TVs. We create your workspace with you, and your flights and timings go in the config panel. A short walkthrough is enough for the team.</p></div>
       </details><details class="faq-item">
         <summary><span>Can we adapt it to our operation?</span><span class="faq-plus" aria-hidden="true"></span></summary>
         <div class="faq-a"><p>Yes. Airlines, colours, meal types, alert timing and the rules behind sealing and truck slots, per aircraft size, are all set in your workspace.</p></div>
@@ -570,8 +570,9 @@
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-brand">
-      <a class="nav-logo" href="./"><span class="logo-mark" aria-hidden="true"></span><span>OPSRAMP</span></a>
-      <p>Live operations board for airline catering.</p>
+      <a class="nav-logo" href="./" aria-label="ANGA home"><span class="wm">ANGA<span class="wm-dot" aria-hidden="true"></span></span></a>
+      <p>Live catering operations, on one screen.</p>
+      <p class="footer-origin">Anga means sky in Swahili.</p>
     </div>
     <ul class="footer-links">
       <li><a href="mailto:augustin@de-franssu.com"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg><span>augustin@de-franssu.com</span></a></li>
@@ -581,7 +582,7 @@
     </ul>
   </div>
   <div class="container footer-legal">
-    <p>© 2026 OpsRamp. OpsRamp is an independent product. Airline names in the demo are used for illustration only; no affiliation is implied.</p>
+    <p>© 2026 ANGA. ANGA is an independent product. Airline names in the demo are used for illustration only; no affiliation is implied.</p>
   </div>
 </footer>
 </body>

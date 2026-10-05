@@ -1,4 +1,4 @@
-import { esc, icon } from './_helpers.mjs';
+import { esc, icon, wordmark } from './_helpers.mjs';
 
 /** Config panel: interactive mockup of the online workspace settings, with a live preview. */
 export default function configPanel(cfg) {
@@ -15,7 +15,7 @@ export default function configPanel(cfg) {
     <div class="cp reveal" data-config-panel>
       <div class="cp-panel">
         <div class="cp-top">
-          <span class="cp-ws mono"><span class="logo-mark" aria-hidden="true"></span>Workspace · Sample hub</span>
+          <span class="cp-ws mono">${wordmark(cfg.site.name)}<span>Workspace · Sample hub</span></span>
           <span class="cp-saved mono" data-saved aria-live="polite">All changes saved</span>
         </div>
         <div class="cp-tabs" role="tablist" aria-label="Settings">

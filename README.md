@@ -1,6 +1,8 @@
-# OpsRamp website
+# ANGA website
 
-Marketing site and interactive demo for OpsRamp, the live operations board for airline catering.
+Marketing site and interactive demo for ANGA, the live operations board for airline catering.
+
+*Live catering operations, on one screen.* Anga means sky in Swahili.
 
 - One page with 15 sections, plus a shareable full-screen demo at `/demo/`, a security & privacy page at `/privacy/` and a legal page at `/legal/`.
 - Plain HTML, CSS and JavaScript. No framework, no `npm install` needed to build.
@@ -25,7 +27,7 @@ python3 -m http.server 4173 -d dist            # preview at http://localhost:417
 | Form provider | `contact.formProvider` (`'mailto'`, `'formspree'` or `'netlify'`) | `mailto` |
 | Proof figures | `proofStrip` | ~50 users, multi-site, 4 milestones |
 | Privacy page details | `build.mjs` (`/privacy` page, lines marked "To complete") | Hosting, retention, subprocessors to fill in. The page is `noindex` until then |
-| Product name | `site.name` | Check trademark and domain availability for "OpsRamp" before launch |
+| Product name, baseline, email, domain | `PRODUCT_NAME`, `TAGLINE`, `CONTACT_EMAIL`, `SITE_URL` at the top of `config.js`. Every page, the wordmark and the social images read them | ANGA. Check trademark and domain availability before launch |
 
 After changing `site.url` or any visible text used in the images, regenerate the social visuals (section 4).
 
@@ -110,3 +112,20 @@ tools/               poster layouts + capture script for the visuals
 ## Demo data
 
 `src/js/dashboard/data.js` holds 28 fictional flights for 12 real airlines at a fictional hub. Times follow the real sequence (ETA, sealing, truck departure, ETD). Nothing in it comes from a real schedule. The demo runs entirely in the browser: no network calls, no storage, no API key.
+
+## Renaming the GitHub repository
+
+If the repository is renamed (for example to `anga`), the GitHub Pages address changes from
+`https://gus02322.github.io/Dashboard-Airlines-solution/` to `https://gus02322.github.io/<new-name>/`.
+GitHub redirects git URLs (clone, push) but **not** the Pages address: the old one returns 404.
+
+1. Update `SITE_URL` in `config.js`, run `node build.mjs`, commit and push.
+2. Optional redirect for old links: create a new repository named `Dashboard-Airlines-solution` with Pages enabled,
+   containing only an `index.html` and a `404.html` that forward to the new address and keep the path and `#anchor`:
+   ```html
+   <!doctype html><meta charset="utf-8"><meta name="robots" content="noindex">
+   <script>location.replace('https://gus02322.github.io/NEW-NAME' + location.pathname.replace(/^\/Dashboard-Airlines-solution/, '') + location.search + location.hash);</script>
+   <a href="https://gus02322.github.io/NEW-NAME/">ANGA has moved</a>
+   ```
+   Note: reusing the old name this way ends GitHub's automatic git redirect to the renamed repository.
+3. Better long term: a custom domain. Then only `SITE_URL` changes, whatever the repository is called.

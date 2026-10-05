@@ -52,7 +52,6 @@
 }
 .db-top > * { display: flex; align-items: center; border-right: 1px solid var(--db-border); padding: 0 12px; white-space: nowrap; }
 .db-logo { font-weight: 700; font-size: 14px; letter-spacing: 0.2em; color: var(--accent); gap: 8px; }
-.db-logo-mark { width: 12px; height: 12px; border: 2px solid var(--accent); transform: rotate(45deg); border-radius: 2px; }
 .db-date { font-size: 12px; color: var(--text-dim); display: none; }
 .db-clock { font-size: 20px; color: var(--now); letter-spacing: 0.06em; font-variant-numeric: tabular-nums; }
 .db-sync { gap: 6px; display: none; }

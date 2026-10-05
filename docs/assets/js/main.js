@@ -58,7 +58,7 @@ if (dashHost) {
     if (started) return;
     started = true;
     const { createDashboard } = await import('./dashboard/app.js');
-    createDashboard(dashHost, { start: dashHost.dataset.start || '10:40' });
+    createDashboard(dashHost, { start: dashHost.dataset.start || '10:40', name: CFG.name });
   };
   // Direct link to the demo or a click on "Try the live demo" loads it immediately
   if (location.hash === '#demo' || dashHost.hasAttribute('data-eager')) start();
