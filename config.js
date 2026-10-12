@@ -20,7 +20,7 @@ export const PRODUCT_NAME = 'OpsOnTime';
 // Baseline: page titles, footer, social images.
 export const TAGLINE = 'Live catering operations, on one screen.';
 // Single contact address: form fallback, footer, legal and privacy pages.
-export const CONTACT_EMAIL = 'contact@opsontime.com';
+export const CONTACT_EMAIL = 'augustin@opsontime.com';
 // Public address of the site, no trailing slash. Used for canonical links,
 // social previews (LinkedIn needs absolute URLs) and the sitemap.
 export const SITE_URL = 'https://opsontime.com';
