@@ -16,15 +16,14 @@
 
 /* ---------- The four values the whole site reads ---------- */
 // Product name, as shown in the wordmark, titles and copy.
-export const PRODUCT_NAME = 'ANGA';
+export const PRODUCT_NAME = 'OpsOnTime';
 // Baseline: page titles, footer, social images.
 export const TAGLINE = 'Live catering operations, on one screen.';
 // Single contact address: form fallback, footer, legal and privacy pages.
-export const CONTACT_EMAIL = 'augustin@de-franssu.com';
+export const CONTACT_EMAIL = 'contact@opsontime.com';
 // Public address of the site, no trailing slash. Used for canonical links,
 // social previews (LinkedIn needs absolute URLs) and the sitemap.
-// Currently GitHub Pages; replace with your own domain when you have it.
-export const SITE_URL = 'https://gus02322.github.io/Dashboard-Airlines-solution';
+export const SITE_URL = 'https://opsontime.com';
 
 const N = PRODUCT_NAME;
 
@@ -35,8 +34,6 @@ export default {
     tagline: TAGLINE,
     url: SITE_URL,
     title: `${PRODUCT_NAME} | ${TAGLINE.replace(/\.$/, '')}`,
-    // One discreet line about the name, shown in the footer
-    nameOrigin: 'Anga means sky in Swahili.',
     description:
       'A real-time board for airline catering: live estimated ETA and ETD from flight tracking, sealing and truck slots that adjust on their own, in your own private workspace.',
     language: 'en',

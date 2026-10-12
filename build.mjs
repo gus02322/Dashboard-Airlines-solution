@@ -172,6 +172,9 @@ const DOCS = join(ROOT, 'docs');
 await rm(DOCS, { recursive: true, force: true });
 await cp(OUT, DOCS, { recursive: true });
 await writeFile(join(DOCS, '.nojekyll'), '');
+// Custom domain: GitHub Pages reads CNAME from the published folder
+const host = new URL(cfg.site.url).hostname;
+if (!host.endsWith('github.io')) await writeFile(join(DOCS, 'CNAME'), host + '\n');
 
 /* Safety net: if GitHub Pages is set to serve the repository root instead
    of /docs, it would show this README. A root index.html sends visitors

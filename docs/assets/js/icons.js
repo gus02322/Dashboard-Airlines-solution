@@ -48,8 +48,8 @@ const P = {
 };
 
 /**
- * Product wordmark: the name in capitals with a small cyan dot, like a
- * point of light in the sky. Used by the build and the browser modules.
+ * Product wordmark: the name in capitals with a small cyan dot.
+ * Used by the build and the browser modules.
  * @param {string} name
  * @param {string} [cls]
  */
