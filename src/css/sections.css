@@ -440,7 +440,6 @@
 .footer { border-top: 1px solid var(--border-soft); padding-block: 48px 32px; background: var(--bg-deep); }
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
 .footer-brand p { color: var(--text-dim); margin-top: 6px; }
-.footer-brand .footer-origin { font-size: 0.9375rem; margin-top: 2px; }
 .footer-links { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: center; }
 .footer-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--text); }
 .footer-links a:hover { color: var(--accent); }

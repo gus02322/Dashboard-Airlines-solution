@@ -9,7 +9,6 @@ export default function footer(cfg, { root = '' } = {}) {
     <div class="footer-brand">
       <a class="nav-logo" href="${root || './'}" aria-label="${esc(cfg.site.name)} home">${wordmark(cfg.site.name)}</a>
       <p>${esc(cfg.footer.tagline)}</p>
-      <p class="footer-origin">${esc(cfg.site.nameOrigin)}</p>
     </div>
     <ul class="footer-links">
       <li><a href="mailto:${esc(c.email)}">${icon('mail')}<span>${esc(c.email)}</span></a></li>
