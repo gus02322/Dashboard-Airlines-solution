@@ -3,6 +3,8 @@
    (server-side HTML) and the browser modules.
    ============================================================ */
 
+import { logo } from './brand.js';
+
 const P = {
   search: '<circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/>',
   close: '<path d="M6 6l12 12M18 6 6 18"/>',
@@ -48,14 +50,12 @@ const P = {
 };
 
 /**
- * Product wordmark: the name in capitals with a small cyan dot.
- * Used by the build and the browser modules.
+ * Product logo (mark + wordmark), see brand.js.
  * @param {string} name
  * @param {string} [cls]
  */
 export function wordmark(name, cls = '') {
-  const s = String(name).replace(/[&<>"]/g, '');
-  return `<span class="wm${cls ? ' ' + cls : ''}">${s.toUpperCase()}<span class="wm-dot" aria-hidden="true"></span></span>`;
+  return logo(name, { cls });
 }
 
 /**

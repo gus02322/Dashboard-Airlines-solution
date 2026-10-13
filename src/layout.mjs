@@ -34,6 +34,7 @@ export default function layout(cfg, page) {
 <meta name="theme-color" content="#13161e">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="${root}favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="${root}assets/brand/logo-mark.png">
 <link rel="preload" href="${root}assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${root}assets/fonts/barlow-condensed-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${root}assets/fonts/share-tech-mono-400.woff2" as="font" type="font/woff2" crossorigin>

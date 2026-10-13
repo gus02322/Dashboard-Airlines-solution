@@ -47,6 +47,15 @@ await cp(join(SRC, 'fonts'), join(OUT, 'assets', 'fonts'), { recursive: true });
 await cp(join(SRC, 'static'), OUT, { recursive: true });
 if (existsSync(join(ROOT, 'share'))) await cp(join(ROOT, 'share'), join(OUT, 'share'), { recursive: true });
 
+/* Brand files in SVG, generated from src/js/brand.js (PNG originals in assets/brand) */
+{
+  const { logo, logoMark } = await import('./src/js/brand.js');
+  const svg = (inner, fill) => inner.replace('<svg ', `<svg xmlns="http://www.w3.org/2000/svg" style="color:${fill}" `);
+  await writeFile(join(OUT, 'assets', 'brand', 'logo-dark.svg'), svg(logo(cfg.site.name, { cyan: '#00d4ff', yellow: '#ffcc00' }), '#e8ebf2'));
+  await writeFile(join(OUT, 'assets', 'brand', 'logo-light.svg'), svg(logo(cfg.site.name, { cyan: '#008aad', yellow: '#e8a800' }), '#13161e'));
+  await writeFile(join(OUT, 'assets', 'brand', 'logo-mark.svg'), svg(logoMark(), '#00d4ff'));
+}
+
 /* Browser-side config: only what scripts need (never secrets). */
 const clientCfg = `<script id="site-config" type="application/json">${JSON.stringify({
   name: cfg.site.name,
