@@ -7,8 +7,7 @@
  *
  *     node build.mjs
  *
- * and the site is regenerated in /dist and /docs. (Netlify does this
- * for you automatically on every push.)
+ * and the site is regenerated in /dist and /docs.
  *
  * Writing rules used across the copy: short sentences, no em dashes,
  * no invented statistics, no customer names, no data provider names.
@@ -16,10 +15,10 @@
 
 /* ---------- The four values the whole site reads ---------- */
 // Product name, as shown in the wordmark, titles and copy.
-export const PRODUCT_NAME = 'OpsOnTime';
+export const PRODUCT_NAME = 'Ops On Time';
 // Baseline: page titles, footer, social images.
 export const TAGLINE = 'Live catering operations, on one screen.';
-// Single contact address: form fallback, footer, legal and privacy pages.
+// Single contact address: footer, form error message, legal and privacy pages.
 export const CONTACT_EMAIL = 'augustin@opsontime.com';
 // Public address of the site, no trailing slash. Used for canonical links,
 // social previews (LinkedIn needs absolute URLs) and the sitemap.
@@ -43,13 +42,16 @@ export default {
   /* ---------- Contact & form ---------- */
   contact: {
     email: CONTACT_EMAIL,
-    linkedin: 'https://www.linkedin.com/in/YOUR-PROFILE', // TODO: replace
-    // Form provider:
-    //  'mailto'    opens the visitor's email app, pre-filled (works anywhere, no account)
-    //  'netlify'   Netlify Forms (only when the site is hosted on Netlify)
-    //  'formspree' paste your Formspree endpoint below (works on GitHub Pages)
-    formProvider: 'mailto',
-    formspreeEndpoint: 'https://formspree.io/f/YOUR_FORM_ID', // only used with 'formspree'
+    linkedin: 'https://www.linkedin.com/in/augustin-de-franssu-756522166',
+    // Demo request form, sent with Web3Forms (works on GitHub Pages, no backend).
+    // The access key is meant to be public: Web3Forms only uses it to route
+    // submissions to your inbox. Replace the placeholder with your key.
+    form: {
+      endpoint: 'https://api.web3forms.com/submit',
+      accessKey: 'WEB3FORMS_ACCESS_KEY',
+      subject: `New demo request - ${PRODUCT_NAME}`,
+      fromName: `${PRODUCT_NAME} website`,
+    },
   },
 
   /* ---------- Navigation ---------- */
@@ -164,10 +166,10 @@ export default {
     text: `${N} is designed around five principles. They shape how the product is built, not just how it is sold.`,
     // Design principles. Check each one technically before going live (see README checklist).
     items: [
-      { icon: 'box', title: 'An isolated workspace', text: 'Each customer has its own workspace and its own database. Your data is never visible to another customer.' },
+      { icon: 'box', title: 'Your own board', text: 'Each customer gets its own board, airline rules and configuration. A dedicated database and sub-domain per customer (for example jnb.opsontime.com) are being rolled out.' },
       { icon: 'ban', title: 'Never sold, never used to train AI', text: 'Your schedule is used to run your board. It is never resold and never used to train AI models.' },
-      { icon: 'lock', title: 'Encrypted in transit and at rest', text: 'Data is encrypted on its way to your screens and where it is stored.' },
-      { icon: 'users', title: 'Access per user, with roles', text: 'Admin, supervisor, and read only for TV screens. Everyone sees what their role needs.' },
+      { icon: 'lock', title: 'Encrypted in transit', text: 'All connections to the board use HTTPS.' },
+      { icon: 'users', title: 'Roles for each user (coming)', text: 'Admin, supervisor and read-only access for TV screens are part of the upcoming online configuration panel.' },
       { icon: 'download', title: 'Export and deletion on request', text: 'Ask for a full export of your data, or for its deletion, at any time.' },
     ],
     link: 'Security & privacy details',
@@ -266,8 +268,8 @@ export default {
     text: 'Send us a few lines. We reply within one working day with a demo slot or a quote.',
     sizes: ['Under 20 flights / day', '20 to 50 flights / day', '50 to 100 flights / day', 'More than 100 flights / day'],
     submit: 'Request a demo',
-    success: 'Thank you. Your request is in. We will reply within one working day.',
-    error: 'Sending failed. Your email app will open with the message ready to send.',
+    success: "Thanks, your request has been sent. I'll get back to you within one business day.",
+    error: `Sending failed. Please try again in a moment, or email ${CONTACT_EMAIL} directly.`,
   },
 
   /* ---------- Footer ---------- */

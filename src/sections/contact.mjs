@@ -1,10 +1,8 @@
 import { esc, icon } from './_helpers.mjs';
 
-/** 12. Final CTA + demo request form (Netlify Forms or Formspree, mailto fallback). */
+/** 12. Final CTA + demo request form, sent with Web3Forms (form.js posts it as JSON). */
 export default function contact(cfg) {
-  const c = cfg.cta, k = cfg.contact;
-  const netlify = k.formProvider === 'netlify';
-  const action = netlify ? '/' : k.formspreeEndpoint;
+  const c = cfg.cta, k = cfg.contact, f = k.form;
   return `
 <section class="section contact" id="contact" aria-labelledby="contact-title">
   <div class="container contact-grid">
@@ -15,10 +13,11 @@ export default function contact(cfg) {
       <p class="contact-direct">Prefer email? <a href="mailto:${esc(k.email)}">${esc(k.email)}</a></p>
     </div>
     <div class="form-card reveal">
-      <form class="demo-form" name="demo-request" method="POST" action="${esc(action)}" novalidate data-form
-        ${netlify ? 'data-netlify="true" netlify-honeypot="company_website"' : ''}>
-        ${netlify ? '<input type="hidden" name="form-name" value="demo-request">' : ''}
-        <p class="hp" aria-hidden="true"><label>Leave empty <input name="company_website" tabindex="-1" autocomplete="off"></label></p>
+      <form class="demo-form" name="demo-request" action="${esc(f.endpoint)}" method="POST" novalidate data-form>
+        <input type="hidden" name="access_key" value="${esc(f.accessKey)}">
+        <input type="hidden" name="subject" value="${esc(f.subject)}">
+        <input type="hidden" name="from_name" value="${esc(f.fromName)}">
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="field">
           <label for="f-name">Name</label>
           <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="120">

@@ -60,8 +60,6 @@ if (existsSync(join(ROOT, 'share'))) await cp(join(ROOT, 'share'), join(OUT, 'sh
 const clientCfg = `<script id="site-config" type="application/json">${JSON.stringify({
   name: cfg.site.name,
   email: cfg.contact.email,
-  formProvider: cfg.contact.formProvider,
-  formspreeEndpoint: cfg.contact.formspreeEndpoint,
   cta: { success: cfg.cta.success, error: cfg.cta.error },
   roi: cfg.roi,
   copilot: { questions: cfg.copilot?.questions || [] },
@@ -119,11 +117,11 @@ await page('legal', layout(cfg, {
 <main id="main" class="section legal"><div class="container legal-inner">
   <h1 class="h2">Legal notice</h1>
   <h2 class="h3">Publisher</h2>
-  <p>${cfg.site.name}. Contact: <a href="mailto:${cfg.contact.email}">${cfg.contact.email}</a>.</p>
+  <p>${cfg.site.name} is published by Augustin de Franssu, [LEGAL_STATUS_AND_SIREN], [POSTAL_ADDRESS]. Contact: <a href="mailto:${cfg.contact.email}">${cfg.contact.email}</a>. Publication director: Augustin de Franssu.</p>
   <h2 class="h3">Hosting</h2>
-  <p>This website is a static site served by its hosting provider (for example Netlify or GitHub Pages).</p>
+  <p>This website is hosted by GitHub Pages, GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. The domain is registered with OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</p>
   <h2 class="h3">Personal data</h2>
-  <p>The demo request form collects your name, work email, company, operation size and message, only to answer your request. The data is not sold or shared for marketing. Ask for access or deletion at any time by email.</p>
+  <p>The demo request form collects your name, work email, company, operation size and message, only to answer your request. It is transmitted through our form provider (Web3Forms) to our inbox. The data is not sold or shared for marketing. You can ask for access or deletion at any time by email.</p>
   <h2 class="h3">Cookies</h2>
   <p>This website does not use tracking cookies. The interactive demo runs entirely in your browser and stores nothing.</p>
   <h2 class="h3">Trademarks</h2>
@@ -132,9 +130,8 @@ await page('legal', layout(cfg, {
 ${S.footer(cfg, { root: '../' })}`,
 }));
 
-// /privacy: security & privacy details. Placeholder until each point is
-// confirmed; kept out of search engines (noindex) until then.
-const todo = (t) => `<span class="todo">To complete: ${t}</span>`;
+// /privacy: security & privacy details. Kept out of search engines
+// (noindex) until the [PLACEHOLDERS] are filled in.
 await page('privacy', layout(cfg, {
   path: 'privacy/',
   root: '../',
@@ -154,11 +151,11 @@ await page('privacy', layout(cfg, {
   <h2 class="h3">AI assistants (MCP)</h2>
   <p>When you connect your own AI assistant through MCP, it reads your board data with the access you grant. Your AI provider's own terms apply to that assistant. ${cfg.site.name} does not use your data to train AI models.</p>
   <h2 class="h3">Hosting and storage</h2>
-  ${todo('hosting provider, data region, backup policy.')}
+  <p>The website is hosted on GitHub Pages (GitHub, Inc.). The live board is hosted on [BOARD_HOSTING_PROVIDER], in [BOARD_HOSTING_REGION]. Backups: [BACKUP_FREQUENCY].</p>
   <h2 class="h3">Retention</h2>
-  ${todo('how long data is kept after a contract ends.')}
+  <p>Customer data is kept for the duration of the contract. When a contract ends, it is deleted within 30 days, after a full export if you ask for one. Demo requests are kept for up to 24 months after our last exchange.</p>
   <h2 class="h3">Subprocessors</h2>
-  ${todo('list of third-party services that process customer data.')}
+  <p>GitHub (website hosting), Google Workspace (email), Web3Forms (demo request form), [BOARD_HOSTING_PROVIDER] (board hosting and storage).</p>
   <h2 class="h3">Contact</h2>
   <p>Questions, export or deletion requests: <a href="mailto:${cfg.contact.email}">${cfg.contact.email}</a>.</p>
 </div></main>
@@ -176,7 +173,7 @@ await writeFile(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${
 
 /* ---------- GitHub Pages copy ----------
    GitHub Pages can serve a branch's /docs folder directly, so the built
-   site is mirrored there (commit it). Netlify keeps using ./dist. */
+   site is mirrored there (commit it). ./dist is the same site for other hosts. */
 const DOCS = join(ROOT, 'docs');
 await rm(DOCS, { recursive: true, force: true });
 await cp(OUT, DOCS, { recursive: true });
