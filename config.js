@@ -43,12 +43,13 @@ export default {
   contact: {
     email: CONTACT_EMAIL,
     linkedin: 'https://www.linkedin.com/in/augustin-de-franssu-756522166',
-    // Demo request form, sent with Web3Forms (works on GitHub Pages, no backend).
-    // The access key is meant to be public: Web3Forms only uses it to route
-    // submissions to your inbox. Replace the placeholder with your key.
+    // Demo request form: sent straight from the page, no email app opens.
+    //  - web3formsKey empty: FormSubmit delivers to CONTACT_EMAIL. The very first
+    //    request triggers a one-time activation email: click the link in it.
+    //  - web3formsKey set (free key from web3forms.com): Web3Forms is used instead.
+    // Both keys are public by design: they only route submissions to your inbox.
     form: {
-      endpoint: 'https://api.web3forms.com/submit',
-      accessKey: 'WEB3FORMS_ACCESS_KEY',
+      web3formsKey: '',
       subject: `New demo request - ${PRODUCT_NAME}`,
       fromName: `${PRODUCT_NAME} website`,
     },
@@ -166,7 +167,7 @@ export default {
     text: `${N} is designed around five principles. They shape how the product is built, not just how it is sold.`,
     // Design principles. Check each one technically before going live (see README checklist).
     items: [
-      { icon: 'box', title: 'Your own board', text: 'Each customer gets its own board, airline rules and configuration. A dedicated database and sub-domain per customer (for example jnb.opsontime.com) are being rolled out.' },
+      { icon: 'box', title: 'Your own board', text: 'Each customer gets its own board, airline rules and configuration. A dedicated database and sub-domain per customer (for example yourcompany.opsontime.com) are being rolled out.' },
       { icon: 'ban', title: 'Never sold, never used to train AI', text: 'Your schedule is used to run your board. It is never resold and never used to train AI models.' },
       { icon: 'lock', title: 'Encrypted in transit', text: 'All connections to the board use HTTPS.' },
       { icon: 'users', title: 'Roles for each user (coming)', text: 'Admin, supervisor and read-only access for TV screens are part of the upcoming online configuration panel.' },
@@ -251,7 +252,7 @@ export default {
     eyebrow: 'FAQ',
     title: 'Questions operators ask',
     items: [
-      { q: 'Is our schedule data secure?', a: 'Each customer has an isolated workspace with its own database. Data is encrypted in transit and at rest, access is per user with roles, and no passenger data is needed. The details are on the Security & privacy page.' },
+      { q: 'Is our schedule data secure?', a: 'Each customer gets its own board, rules and configuration, and every connection uses HTTPS. Your data is never sold or used to train AI, and no passenger data is needed. A dedicated database per customer and user roles are being rolled out. The details are on the Security & privacy page.' },
       { q: 'Where do the live ETA and ETD come from?', a: `From live aircraft tracking (ADS-B). ${N} estimates arrival and departure times from the real position of the aircraft. These are live estimates, not official airline schedules, and they can move as the flight progresses.` },
       { q: 'Who pays for the AI?', a: `You do, through your own AI subscription. ${N} only bills access and setup, never AI usage.` },
       { q: 'Do we need an IT project or special training?', a: `No. ${N} runs in a web browser on PCs, phones and TVs. We create your workspace with you, and your flights and timings go in the config panel. A short walkthrough is enough for the team.` },

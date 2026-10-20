@@ -1,8 +1,8 @@
-import { esc, icon } from './_helpers.mjs';
+import { esc, icon, formService } from './_helpers.mjs';
 
-/** 12. Final CTA + demo request form, sent with Web3Forms (form.js posts it as JSON). */
+/** 12. Final CTA + demo request form, sent from the page (form.js posts it as JSON). */
 export default function contact(cfg) {
-  const c = cfg.cta, k = cfg.contact, f = k.form;
+  const c = cfg.cta, k = cfg.contact, f = k.form, svc = formService(cfg);
   return `
 <section class="section contact" id="contact" aria-labelledby="contact-title">
   <div class="container contact-grid">
@@ -13,10 +13,14 @@ export default function contact(cfg) {
       <p class="contact-direct">Prefer email? <a href="mailto:${esc(k.email)}">${esc(k.email)}</a></p>
     </div>
     <div class="form-card reveal">
-      <form class="demo-form" name="demo-request" action="${esc(f.endpoint)}" method="POST" novalidate data-form>
-        <input type="hidden" name="access_key" value="${esc(f.accessKey)}">
+      <form class="demo-form" name="demo-request" action="${esc(svc.action)}" method="POST" novalidate data-form>
+        ${svc.web3forms
+          ? `<input type="hidden" name="access_key" value="${esc(f.web3formsKey)}">
         <input type="hidden" name="subject" value="${esc(f.subject)}">
-        <input type="hidden" name="from_name" value="${esc(f.fromName)}">
+        <input type="hidden" name="from_name" value="${esc(f.fromName)}">`
+          : `<input type="hidden" name="_subject" value="${esc(f.subject)}">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">`}
         <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="field">
           <label for="f-name">Name</label>

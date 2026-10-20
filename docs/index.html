@@ -296,7 +296,7 @@
         <span class="pr-num mono">01</span>
         <span class="pr-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg></span>
         <h3 class="h3">Your own board</h3>
-        <p>Each customer gets its own board, airline rules and configuration. A dedicated database and sub-domain per customer (for example jnb.opsontime.com) are being rolled out.</p>
+        <p>Each customer gets its own board, airline rules and configuration. A dedicated database and sub-domain per customer (for example yourcompany.opsontime.com) are being rolled out.</p>
       </li><li class="principle reveal" style="--d:80ms">
         <span class="pr-num mono">02</span>
         <span class="pr-ic"><svg class="ico" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="m6 6 12 12"/></svg></span>
@@ -492,7 +492,7 @@
     <div class="faq-list reveal">
       <details class="faq-item">
         <summary><span>Is our schedule data secure?</span><span class="faq-plus" aria-hidden="true"></span></summary>
-        <div class="faq-a"><p>Each customer has an isolated workspace with its own database. Data is encrypted in transit and at rest, access is per user with roles, and no passenger data is needed. The details are on the Security &amp; privacy page.</p></div>
+        <div class="faq-a"><p>Each customer gets its own board, rules and configuration, and every connection uses HTTPS. Your data is never sold or used to train AI, and no passenger data is needed. A dedicated database per customer and user roles are being rolled out. The details are on the Security &amp; privacy page.</p></div>
       </details><details class="faq-item">
         <summary><span>Where do the live ETA and ETD come from?</span><span class="faq-plus" aria-hidden="true"></span></summary>
         <div class="faq-a"><p>From live aircraft tracking (ADS-B). Ops On Time estimates arrival and departure times from the real position of the aircraft. These are live estimates, not official airline schedules, and they can move as the flight progresses.</p></div>
@@ -525,10 +525,10 @@
       <p class="contact-direct">Prefer email? <a href="mailto:augustin@opsontime.com">augustin@opsontime.com</a></p>
     </div>
     <div class="form-card reveal">
-      <form class="demo-form" name="demo-request" action="https://api.web3forms.com/submit" method="POST" novalidate data-form>
-        <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY">
-        <input type="hidden" name="subject" value="New demo request - Ops On Time">
-        <input type="hidden" name="from_name" value="Ops On Time website">
+      <form class="demo-form" name="demo-request" action="https://formsubmit.co/ajax/augustin@opsontime.com" method="POST" novalidate data-form>
+        <input type="hidden" name="_subject" value="New demo request - Ops On Time">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
         <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="field">
           <label for="f-name">Name</label>

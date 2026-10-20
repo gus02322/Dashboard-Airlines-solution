@@ -1,7 +1,8 @@
 /* ============================================================
    Demo request form
    - inline validation with accessible error messages
-   - sends the form to Web3Forms as JSON, without leaving the page
+   - sends the form as JSON (FormSubmit or Web3Forms, see config.js),
+     without leaving the page or opening an email app
    - clear error message with the contact address if sending fails
    ============================================================ */
 
@@ -61,7 +62,8 @@ export function initForm(form, cfg) {
         body: JSON.stringify(payload),
       });
       const json = await res.json().catch(() => ({}));
-      if (!res.ok || !json.success) throw new Error(json.message || 'HTTP ' + res.status);
+      // Web3Forms answers success: true, FormSubmit answers success: "true"
+      if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || 'HTTP ' + res.status);
       msg.textContent = '';
       form.hidden = true;
       done.hidden = false;

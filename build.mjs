@@ -65,6 +65,9 @@ const clientCfg = `<script id="site-config" type="application/json">${JSON.strin
   copilot: { questions: cfg.copilot?.questions || [] },
 }).replace(/</g, '\\u003c')}</script>`;
 
+/* Service that delivers the demo form (named on the legal and privacy pages) */
+const FORM = (await import('./src/sections/_helpers.mjs')).formService(cfg);
+
 /* ---------- Pages ---------- */
 async function page(path, html) {
   const file = join(OUT, path, 'index.html');
@@ -117,11 +120,11 @@ await page('legal', layout(cfg, {
 <main id="main" class="section legal"><div class="container legal-inner">
   <h1 class="h2">Legal notice</h1>
   <h2 class="h3">Publisher</h2>
-  <p>${cfg.site.name} is published by Augustin de Franssu, [LEGAL_STATUS_AND_SIREN], [POSTAL_ADDRESS]. Contact: <a href="mailto:${cfg.contact.email}">${cfg.contact.email}</a>. Publication director: Augustin de Franssu.</p>
+  <p>${cfg.site.name} is published by Augustin de Franssu. Contact: <a href="mailto:${cfg.contact.email}">${cfg.contact.email}</a>. Publication director: Augustin de Franssu.</p>
   <h2 class="h3">Hosting</h2>
   <p>This website is hosted by GitHub Pages, GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. The domain is registered with OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</p>
   <h2 class="h3">Personal data</h2>
-  <p>The demo request form collects your name, work email, company, operation size and message, only to answer your request. It is transmitted through our form provider (Web3Forms) to our inbox. The data is not sold or shared for marketing. You can ask for access or deletion at any time by email.</p>
+  <p>The demo request form collects your name, work email, company, operation size and message, only to answer your request. It is transmitted through our form provider (${FORM.name}) to our inbox. The data is not sold or shared for marketing. You can ask for access or deletion at any time by email.</p>
   <h2 class="h3">Cookies</h2>
   <p>This website does not use tracking cookies. The interactive demo runs entirely in your browser and stores nothing.</p>
   <h2 class="h3">Trademarks</h2>
@@ -130,12 +133,10 @@ await page('legal', layout(cfg, {
 ${S.footer(cfg, { root: '../' })}`,
 }));
 
-// /privacy: security & privacy details. Kept out of search engines
-// (noindex) until the [PLACEHOLDERS] are filled in.
+// /privacy: security & privacy details
 await page('privacy', layout(cfg, {
   path: 'privacy/',
   root: '../',
-  noindex: true,
   title: `Security & privacy | ${cfg.site.name}`,
   description: `How ${cfg.site.name} isolates, protects and handles your operational data.`,
   body: `${S.nav(cfg, { root: '../', home: false })}
@@ -151,11 +152,11 @@ await page('privacy', layout(cfg, {
   <h2 class="h3">AI assistants (MCP)</h2>
   <p>When you connect your own AI assistant through MCP, it reads your board data with the access you grant. Your AI provider's own terms apply to that assistant. ${cfg.site.name} does not use your data to train AI models.</p>
   <h2 class="h3">Hosting and storage</h2>
-  <p>The website is hosted on GitHub Pages (GitHub, Inc.). The live board is hosted on [BOARD_HOSTING_PROVIDER], in [BOARD_HOSTING_REGION]. Backups: [BACKUP_FREQUENCY].</p>
+  <p>The website is hosted on GitHub Pages (GitHub, Inc.). The hosting provider, data region and backup schedule of your live board are confirmed in writing with each customer before go-live.</p>
   <h2 class="h3">Retention</h2>
   <p>Customer data is kept for the duration of the contract. When a contract ends, it is deleted within 30 days, after a full export if you ask for one. Demo requests are kept for up to 24 months after our last exchange.</p>
   <h2 class="h3">Subprocessors</h2>
-  <p>GitHub (website hosting), Google Workspace (email), Web3Forms (demo request form), [BOARD_HOSTING_PROVIDER] (board hosting and storage).</p>
+  <p>GitHub (website hosting), Google Workspace (email), ${FORM.name} (demo request form). The providers that host and store your live board are listed in your contract.</p>
   <h2 class="h3">Contact</h2>
   <p>Questions, export or deletion requests: <a href="mailto:${cfg.contact.email}">${cfg.contact.email}</a>.</p>
 </div></main>
@@ -166,7 +167,7 @@ ${S.footer(cfg, { root: '../' })}`,
 const today = new Date().toISOString().slice(0, 10);
 await writeFile(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${['', 'demo/', 'legal/'].map((p) => `  <url><loc>${cfg.site.url}/${p}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
+${['', 'demo/', 'privacy/', 'legal/'].map((p) => `  <url><loc>${cfg.site.url}/${p}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
 </urlset>
 `);
 await writeFile(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${cfg.site.url}/sitemap.xml\n`);
