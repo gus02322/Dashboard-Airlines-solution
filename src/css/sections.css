@@ -423,7 +423,6 @@
 .form-submit:disabled { opacity: 0.6; cursor: progress; }
 .form-msg { font-size: 0.9375rem; color: var(--text-dim); }
 .form-msg:empty { display: none; }
-.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form-done { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px 0; }
 .form-done:focus { outline: none; }
 .form-done[hidden] { display: none; }
@@ -719,7 +718,6 @@
 @media (max-width: 479px) { .quote-bar .btn { width: 100%; } }
 
 /* ---------- Privacy page ---------- */
-.todo { display: block; margin-top: 8px; padding: 10px 14px; border: 1px dashed var(--seal); border-radius: 8px; color: var(--seal); font-size: 0.9375rem; }
 .cpv-rows { grid-template-columns: minmax(0, 1fr); }
 .cpv-times { min-width: 0; white-space: pre-wrap; }
 @media (max-width: 559px) {
